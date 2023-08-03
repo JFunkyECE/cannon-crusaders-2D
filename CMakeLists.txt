@@ -10,7 +10,7 @@ set(OpenGL_GL_PREFERENCE "GLVND")
 # find necessary packages
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(GLFW3 REQUIRED)
+find_package(glfw3 REQUIRED)
 
 # include directories
 include_directories(${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${GLFW3_INCLUDE_DIRS})
