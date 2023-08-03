@@ -5,6 +5,7 @@ project(cannon-crusaders)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 20)
+set(OpenGL_GL_PREFERENCE "GLVND")
 
 # find necessary packages
 find_package(OpenGL REQUIRED)
