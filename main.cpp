@@ -24,6 +24,7 @@ int main(void)
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
+        glClearColor(0.0f, 1.0f, 0.0f, 1.0f); // Set clear color to green
         glClear(GL_COLOR_BUFFER_BIT);
 
         /* Swap front and back buffers */
