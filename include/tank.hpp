@@ -12,10 +12,10 @@ public:
     void render() const{
         glColor3f(1.0f, 1.0f, 1.0f);
         glBegin(GL_QUADS);
-        glVertex2f(x, y);
-        glVertex2f(x + width, y);
-        glVertex2f(x + width, y + height);
-        glVertex2f(x, y + height);
+        glVertex2f(x_, y_);
+        glVertex2f(x_ + width_, y_);
+        glVertex2f(x_ + width_, y_ + height_);
+        glVertex2f(x_, y_ + height_);
         glEnd();    }
 
     void move(float dx){
