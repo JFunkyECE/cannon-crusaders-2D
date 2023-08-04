@@ -67,7 +67,7 @@ public:
 private:
 float x_,y_; //stores key data related to position of ball
 bool exists_; //stores whether bullet has made contact with enemy or is out of window
-GLunit VAO_ VBO_; //for each bullet
+GLuint VAO_ VBO_; //for each bullet
 };
 
 
