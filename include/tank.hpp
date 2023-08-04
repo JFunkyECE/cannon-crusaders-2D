@@ -7,22 +7,30 @@ namespace tank{
 
 class Tank{
 public:
-    Tank(float x, float y, float width, float height): x_(x), y_(y), width_(width), height_(height) {
+    Tank() : {
+        //initial positions for tank 
+        x0= -0.1f;
+        y0= -1.0f;
+        x1= -0.04f;
+        y1= -0.85f;
+        width_ = .2f;
+        height_ = .15f;
+
         float tankVertices[] = {
             // Positions
-            x - width / 2, y - height / 2,  // Bottom left corner
-            x - width / 2, y + height / 2,  // Top left corner
-            x + width / 2, y + height / 2,  // Top right corner
-            x + width / 2, y - height / 2   // Bottom right corner
+            x0, y0,  // Bottom left corner
+            x0, y0 + height_,  // Top left corner
+            x0 + width , y0 + height,  // Top right corner
+            x0 + width  , y0   // Bottom right corner
         };
 
         // Initialize the vertices of the cannon launcher
         float launcherVertices[] = {
             // Positions
-            x - width / 4, y + height / 2,  // Bottom left corner
-            x - width / 4, y + height / 2 + height / 4,  // Top left corner
-            x + width / 4, y + height / 2 + height / 4,  // Top right corner
-            x + width / 4, y + height / 2   // Bottom right corner
+            x1, y1,  // Bottom left corner
+            x1, y1 + .1f ,  // Top left corner
+            x1 + .08f, y1 + .1f,  // Top right corner
+            x1 + .08f, y1   // Bottom right corner
         };
 
         glGenVertexArrays(1, &VAO);
@@ -61,7 +69,7 @@ public:
 
 
 private:
-    float x_,y_; //for position of tank
+    float x0,y0,x1,y1; //for position of tank and cannon
     float width_, height_; //for sizing tank
     GLuint VAO, tankVBO, launcherVBO;
 };

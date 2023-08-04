@@ -30,7 +30,7 @@ int main(void)
     }
 
     // Create a tank
-    tank::Tank myTank(0.0f, -0.8f, 0.2f, 0.1f);
+    tank::Tank myTank;
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
