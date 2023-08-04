@@ -39,7 +39,7 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
        
-       if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+        if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
             myTank.move(-0.01f);  // Move the tank to the left
         }
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
