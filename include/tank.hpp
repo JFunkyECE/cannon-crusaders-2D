@@ -129,6 +129,8 @@ public:
     //adds a cannonball to the vector cannonballs_
     void shoot(){
         int cannonballs_onscreen = 5;
+        std::cout<< "Live Cannonballs on screen #"<<live_cannonballs() << std::endl;
+
         if(live_cannonballs() < cannonballs_onscreen && cannonballs_fired < 200){
                 cannonballs_.emplace_back(x1,y1);
                 ++cannonballs_fired;
