@@ -1,5 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "tank.hpp"
+
 
 int main(void)
 {
@@ -20,13 +22,19 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+
+    tank::Tank tank(0.5f, 0.0f, 0.1f, 0.1f); //initialize tank
+
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
         glClear(GL_COLOR_BUFFER_BIT);
-
+        
+        tank.handleInput(window);
+        tank.render();
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
