@@ -1,6 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "tank.hpp"
+#include <iostream>
 
 
 int main(void)
