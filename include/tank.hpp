@@ -19,11 +19,11 @@ public:
         glEnd();    }
 
     void move(float dx){
-        x += dx;
-        if(x<0){
-            x = 0;
-        }else if(x > 1-width){
-            x = 1 - width;
+        x_ += dx;
+        if(x_<0){
+            x_ = 0;
+        }else if(x_ > 1-width_){
+            x_ = 1 - width_;
         }
     }
 
