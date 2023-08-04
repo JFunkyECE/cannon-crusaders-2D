@@ -52,7 +52,7 @@ int main(void)
     // Create a tank
     tank::Tank myTank;
     //initialize shot timer.
-    float lastshot_time = 0f;
+    float lastshot_time = 0.0f;
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))

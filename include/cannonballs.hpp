@@ -64,6 +64,12 @@ public:
     void setExists(bool exists) {
         exists_ = exists;
     }
+    float getX(){
+        return x_;
+    }
+    float getY(){
+        return y_; //give y coord of bottom of cannonball
+    }
 private:
 float x_,y_; //stores key data related to position of ball
 bool exists_; //stores whether bullet has made contact with enemy or is out of window
