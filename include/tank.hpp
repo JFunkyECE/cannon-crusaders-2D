@@ -83,7 +83,7 @@ public:
 private:
     float x0,y0,x1,y1; //for position of tank and cannon
     float width_, height_; //for sizing tank
-    GLuint VAO, tankVBO, launcherVBO;
+    GLuint tankVAO, launcherVAO, tankVBO, launcherVBO;
 };
 }//end of namespace
 #endif
