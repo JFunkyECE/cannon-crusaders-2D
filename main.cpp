@@ -12,7 +12,7 @@ int main(void)
     if (!glfwInit())
         return -1;
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(800, 600, "Cannon Crusaders", NULL, NULL);
+    window = glfwCreateWindow(600, 800, "Cannon Crusaders", NULL, NULL);
     if (!window)
     {
         glfwTerminate(); //need this hear because after initialization

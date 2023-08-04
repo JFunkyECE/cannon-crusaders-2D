@@ -33,15 +33,23 @@ public:
             x1 + .08f, y1   // Bottom right corner
         };
 
-        glGenVertexArrays(1, &VAO);
-        glBindVertexArray(VAO);
+        glGenVertexArrays(1, &tankVAO);
+        glBindVertexArray(tankVAO);
 
         // Generate and bind the Vertex Buffer Object (VBO) for the tank
         glGenBuffers(1, &tankVBO);
         glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(tankVertices), tankVertices, GL_STATIC_DRAW);
 
-        // Generate and bind the Vertex Buffer Object (VBO) for the cannon launcher
+        // Specify the layout of the vertex data
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
+
+        // Generate and bind the Vertex Array Object (VAO) for the launcher
+        glGenVertexArrays(1, &launcherVAO);
+        glBindVertexArray(launcherVAO);
+
+        // Generate and bind the Vertex Buffer Object (VBO) for the launcher
         glGenBuffers(1, &launcherVBO);
         glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(launcherVertices), launcherVertices, GL_STATIC_DRAW);
@@ -64,6 +72,7 @@ public:
         glColor3f(1.0f,1.0f,1.0f);
         glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
         glDrawArrays(GL_QUADS, 0, 4);
+
         glColor3f(0.5f,0.5f,0.5f);
         glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
         glDrawArrays(GL_QUADS, 0, 4);
