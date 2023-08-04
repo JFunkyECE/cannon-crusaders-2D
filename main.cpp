@@ -4,6 +4,16 @@
 #include <iostream>
 
 
+void Keyboard_Input(GLFWwindow* window, tank::Tank& tank){
+    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+            tank.move(-0.01f);  // Move the tank to the left
+        }
+    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+        tank.move(0.01f);  // Move the tank to the right
+    }
+}
+
+
 int main(void)
 {
     GLFWwindow* window;
@@ -39,12 +49,7 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
        
-        if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-            myTank.move(-0.01f);  // Move the tank to the left
-        }
-        if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-            myTank.move(0.01f);  // Move the tank to the right
-        }
+        Keyboard_Input(window, myTank);
         // Render the tank
         myTank.render();
 
