@@ -126,9 +126,15 @@ public:
     }
 
 
-    void shoot();
-    void updateCannonballs();
-    void renderCannonballs();
+    void shoot(){
+
+    }
+    void updateCannonballs(){
+
+    }
+    void renderCannonballs(){
+        
+    }
 private:
     float x0,y0,x1,y1; //for position of tank and cannon
     float width_, height_; //for sizing tank

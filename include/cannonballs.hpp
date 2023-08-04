@@ -29,6 +29,11 @@ public:
         glEnableVertexAttribArray(0);
 
     }
+    //simple destructor to handle VBO and VAO destruction
+    ~Cannonballs() {
+    glDeleteBuffers(1, &VBO_);
+    glDeleteVertexArrays(1, &VAO_);
+    }    
     //handles updating the vertices and VAO and VBO
     void move(float dy){
         y_ += dy;
