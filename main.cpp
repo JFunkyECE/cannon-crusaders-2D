@@ -9,8 +9,11 @@ void Keyboard_Input(GLFWwindow* window, tank::Tank& tank){
             tank.move(-0.01f);  // Move the tank to the left
         }
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-        tank.move(0.01f);  // Move the tank to the right
-    }
+            tank.move(0.01f);  // Move the tank to the right
+        }
+    // add input for shooting
+    // add input for pausing game
+    
 }
 
 

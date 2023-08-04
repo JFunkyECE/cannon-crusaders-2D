@@ -2,6 +2,7 @@
 #define tank_hpp
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "cannonballs.hpp"
 
 namespace tank{
 
@@ -116,11 +117,18 @@ public:
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(launcherVertices), launcherVertices);
     }
     
+    float getX(){
+        return x0;
+    }
+    float getY(){
+        return y0;
+    }
 
 private:
     float x0,y0,x1,y1; //for position of tank and cannon
     float width_, height_; //for sizing tank
-    GLuint tankVAO, launcherVAO, tankVBO, launcherVBO;
+    GLuint tankVAO, launcherVAO, tankVBO, launcherVBO; //VAO and VBO for tank and launcher
+    std::vector<Cannonballs> cannonballs_;
 };
 }//end of namespace
 #endif
