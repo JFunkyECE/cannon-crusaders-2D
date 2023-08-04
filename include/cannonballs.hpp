@@ -29,10 +29,35 @@ public:
         glEnableVertexAttribArray(0);
 
     }
+    //handles updating the vertices and VAO and VBO
+    void move(float dy){
+        y_ += dy;
 
+        // Update the vertices of the cannonball
+        float vertices[] = {
+            x_, y_,
+            x_, y_ + 0.02f,
+            x_ + 0.02f, y_ + 0.02f,
+            x_ + 0.02f, y_
+        };
 
-    
+        glBindVertexArray(VAO_);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+    }
+    //draws cannonball
+    void render() const{
+        glBindVertexArray(VAO_);
+        glDrawArrays(GL_QUADS,0,4);
+    }
 
+    bool exists() const {
+        return exists_;
+    }
+
+    void setExists(bool exists) {
+        exists_ = exists;
+    }
 private:
 float x_,y_; //stores key data related to position of ball
 bool exists_; //stores whether bullet has made contact with enemy or is out of window
