@@ -9,7 +9,7 @@ namespace tank{
 
 class Tank{
 public:
-    Tank(){
+    Tank(): cannonballs_fired(0){
         //initial positions for tank 
         x0= -0.1f;
         y0= -1.0f;
@@ -127,7 +127,13 @@ public:
 
     //adds a cannonball to the vector cannonballs_
     void shoot(){
-        cannonballs_.emplace_back(x1,y1);
+        int cannonballs_onscreen = 5;
+        if(live_cannonballs() < cannonballs_onscreen && cannonballs_fired < 200){
+                cannonballs_.emplace_back(x1,y1);
+                ++cannonballs_fired;
+        } else if (cannonballs_fired >= 200){
+            //add something here to end the current game.
+        }
     }
     void updateCannonballs(){
         for (auto it = cannonballs_.begin(); it != cannonballs_.end(); ++it) {
@@ -147,11 +153,21 @@ public:
         }
         }
     }
+    int live_cannonballs() const{
+        int count = 0;
+        for (const Cannonballs& cannonball : cannonballs_) {
+        if (cannonball.exists()) {
+            ++count;
+        }
+        }
+        return count; 
+    }
 private:
     float x0,y0,x1,y1; //for position of tank and cannon
     float width_, height_; //for sizing tank
     GLuint tankVAO, launcherVAO, tankVBO, launcherVBO; //VAO and VBO for tank and launcher
     std::vector<Cannonballs> cannonballs_;
+    int cannonballs_fired;
 };
 }//end of namespace
 #endif
