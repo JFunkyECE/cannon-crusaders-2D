@@ -14,6 +14,7 @@ find_package(glfw3 3.2.1 REQUIRED)
 
 # include directories
 include_directories(${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS})
+include_directories(cannon-crusaders PUBLIC include/)
 
 # add executable
 add_executable(cannon-crusaders main.cpp)
