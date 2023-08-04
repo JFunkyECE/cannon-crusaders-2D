@@ -21,6 +21,15 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+    // Initialize GLEW
+    glewExperimental = GL_TRUE;
+    if (glewInit() != GLEW_OK) {
+        std::cout << "Failed to initialize GLEW" << std::endl;
+        return -1;
+    }
+
+    // Create a tank
+    tank::Tank myTank(0.0f, -0.8f, 0.2f, 0.1f);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -29,7 +38,8 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
        
-    
+        // Render the tank
+        myTank.render();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
