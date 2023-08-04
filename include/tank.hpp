@@ -87,6 +87,7 @@ public:
             //now need to update vertices for tank
             update_vertices();
         }
+    }
     //updates tank and launcher vertices when move function invoked
     void update_vertices(){
 
@@ -105,7 +106,7 @@ public:
             x1 + .08f, y1 + .1f,  // Top right corner
             x1 + .08f, y1   // Bottom right corner
         };
-        
+
         glBindVertexArray(tankVAO);
         glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(tankVertices), tankVertices);
