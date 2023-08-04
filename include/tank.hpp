@@ -20,10 +20,10 @@ public:
 
     void move(float dx){
         x_ += dx;
-        if(x_<0){
+        if(x_< 0.0){
             x_ = 0;
-        }else if(x_ > 1-width_){
-            x_ = 1 - width_;
+        }else if(x_ > 1.0 -width_){
+            x_ = 1.0 - width_;
         }
     }
 
