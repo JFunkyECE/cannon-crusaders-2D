@@ -7,7 +7,7 @@ namespace tank{
 
 class Tank{
 public:
-    Tank() : {
+    Tank(){
         //initial positions for tank 
         x0= -0.1f;
         y0= -1.0f;
