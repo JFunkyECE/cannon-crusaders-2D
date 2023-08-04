@@ -78,8 +78,43 @@ public:
         glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
         glDrawArrays(GL_QUADS, 0, 4);
         }
+    //called when the user presses a or d to move 
+    void move(float dx){
+        
+        if(x0 + dx >= -1.0f && x0 + dx <= 1.0f - width_){
+            x0 += dx;
+            x1 += dx;
+            //now need to update vertices for tank
+            update_vertices();
+        }
+    //updates tank and launcher vertices when move function invoked
+    void update_vertices(){
 
+        float tankVertices[] = {
+            // Positions
+            x0, y0,  // Bottom left corner
+            x0, y0 + height_,  // Top left corner
+            x0 + width_ , y0 + height_,  // Top right corner
+            x0 + width_  , y0   // Bottom right corner
+        };
 
+        float launcherVertices[] = {
+            // Positions
+            x1, y1,  // Bottom left corner
+            x1, y1 + .1f ,  // Top left corner
+            x1 + .08f, y1 + .1f,  // Top right corner
+            x1 + .08f, y1   // Bottom right corner
+        };
+        
+        glBindVertexArray(tankVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(tankVertices), tankVertices);
+
+        glBindVertexArray(launcherVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(launcherVertices), launcherVertices);
+    }
+    
 
 private:
     float x0,y0,x1,y1; //for position of tank and cannon
