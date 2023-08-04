@@ -63,7 +63,8 @@ public:
         // Clean up
         glDeleteBuffers(1, &tankVBO);
         glDeleteBuffers(1, &launcherVBO);
-        glDeleteVertexArrays(1, &VAO);
+        glDeleteVertexArrays(1, &tankVAO);
+        glDeleteVertexArrays(1, &launcherVAO);
     }
     void render() const{
         // Bind the VAO and draw the tank and the cannon launcher
