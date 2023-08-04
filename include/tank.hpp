@@ -61,7 +61,7 @@ public:
         glEnableVertexAttribArray(0);
 
     }
-     ~Tank() {
+    ~Tank() {
         // Clean up
         glDeleteBuffers(1, &tankVBO);
         glDeleteBuffers(1, &launcherVBO);
@@ -125,15 +125,31 @@ public:
         return y0;
     }
 
-
+    //adds a cannonball to the vector cannonballs_
     void shoot(){
-
+        cannonballs_.emplace_back(x1,y1);
     }
     void updateCannonballs(){
-
+        for (auto it = cannonballs_.begin(); it != cannonballs_.end(); ) {
+            if (it->exists()) {
+                it->move(0.01f);
+                // Check if the cannonball has gone off the top of the screen
+                if (it->getY() > 1.0f) {
+                    it->setExists(false);
+                }
+                ++it;
+            } else {
+                // The cannonball no longer exists, so remove it from the vector
+                it = cannonballs_.erase(it); //this will also call destructor on VAO and VBO associated with bullet
+            }
+        }
     }
-    void renderCannonballs(){
-        
+    void renderCannonballs() const{
+        for (const Cannonballs& cannonball : cannonballs_) {
+        if (cannonball.exists()) {
+            cannonball.render();
+        }
+        }
     }
 private:
     float x0,y0,x1,y1; //for position of tank and cannon
