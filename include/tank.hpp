@@ -67,13 +67,13 @@ public:
     }
     void render() const{
         // Bind the VAO and draw the tank and the cannon launcher
-        glBindVertexArray(VAO);
-
         glColor3f(1.0f,1.0f,1.0f);
+        glBindVertexArray(tankVAO);
         glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
         glDrawArrays(GL_QUADS, 0, 4);
 
         glColor3f(0.5f,0.5f,0.5f);
+        glBindVertexArray(launcherVAO);
         glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
         glDrawArrays(GL_QUADS, 0, 4);
         }
