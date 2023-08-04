@@ -75,7 +75,7 @@ public:
         glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
         glDrawArrays(GL_QUADS, 0, 4);
 
-        //glColor3f(0.5f,0.5f,0.5f);
+        glColor3f(0.5f,0.5f,0.5f);
         glBindVertexArray(launcherVAO);
         glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
         glDrawArrays(GL_QUADS, 0, 4);
@@ -130,18 +130,14 @@ public:
         cannonballs_.emplace_back(x1,y1);
     }
     void updateCannonballs(){
-        for (auto it = cannonballs_.begin(); it != cannonballs_.end(); ) {
+        for (auto it = cannonballs_.begin(); it != cannonballs_.end(); ++it) {
             if (it->exists()) {
-                it->move(0.01f);
+                it->move(0.02f);
                 // Check if the cannonball has gone off the top of the screen
                 if (it->getY() > 1.0f) {
                     it->setExists(false);
                 }
-                ++it;
-            } else {
-                // The cannonball no longer exists, so remove it from the vector
-                it = cannonballs_.erase(it); //this will also call destructor on VAO and VBO associated with bullet
-            }
+            } 
         }
     }
     void renderCannonballs() const{
