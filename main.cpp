@@ -64,9 +64,9 @@ int main(void)
         Keyboard_Input(window, myTank, lastshot_time);
 
         myTank.updateCannonballs();
-        myTank.renderCannonballs();
         // Render the tank
         myTank.render();
+        myTank.renderCannonballs();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
