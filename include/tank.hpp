@@ -20,8 +20,8 @@ public:
             // Positions
             x0, y0,  // Bottom left corner
             x0, y0 + height_,  // Top left corner
-            x0 + width , y0 + height,  // Top right corner
-            x0 + width  , y0   // Bottom right corner
+            x0 + width_ , y0 + height_,  // Top right corner
+            x0 + width_  , y0   // Bottom right corner
         };
 
         // Initialize the vertices of the cannon launcher
