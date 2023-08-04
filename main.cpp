@@ -33,7 +33,12 @@ int main(void)
         glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
         glClear(GL_COLOR_BUFFER_BIT);
         
-        tank.handleIP(window);
+        if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+            tank.move(-0.01f);
+        }
+        if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+            tank.move(0.01f);
+        }
         tank.render();
         /* Swap front and back buffers */
         glfwSwapBuffers(window);

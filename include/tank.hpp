@@ -27,14 +27,6 @@ public:
         }
     }
 
-    void handleIP(GLFWwindow* window){
-        if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-            move(-0.05f);
-        }
-        if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-            move(0.05f);
-        }
-    }
 
 private:
     float x_,y_; //for position of tank
