@@ -18,7 +18,7 @@ public:
 
     }
     //destructor
-    ~Enemy();
+    ~Enemy() = default;
 
     //where the movement algorithm will be implemented
     void move();
