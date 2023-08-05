@@ -3,6 +3,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <tank.hpp>
+#include <enemy.hpp>
 #include <vector>
 
 class Game{
@@ -36,7 +37,7 @@ public:
                 exit(-1);
             }
         my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
-
+        ducks_.reserve(50); //reserve enough space for duck objects
         Init();
     }
 
@@ -107,7 +108,6 @@ public:
         return window_;
     } 
 
-    void Run();
     void Restart(); //for when player wants to restart game
 
 private:
@@ -115,7 +115,10 @@ GameState current_state;
 GLFWwindow* window_;
 tank::Tank* my_tank;
 float lastshot_time;
-//add member class for enemies
+float lastspawn_time; //makes sure enemies spawn in reasonable time of one another
+std::vector<Ducks::Enemy> ducks_; //stores cannonball data
+int enemiesdefeated; //records # of shots fired
+int enemiesonscreen;//add member class for enemies
 
 };
 

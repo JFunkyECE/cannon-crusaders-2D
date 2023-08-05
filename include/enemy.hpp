@@ -1,20 +1,24 @@
-#ifndef enemies_hpp
-#define enemies_hpp
+#ifndef enemy_hpp
+#define enemy_hpp
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
-namespace ducks{
+namespace Ducks{
 
 //create enemy class that holds a vector of enemies with information about current position 
 
-class Enemies{
+class Enemy{
 
 public:
 
     //need constructor that reserves based on difficulty, ie either 20 or 50 enemies.
-    Enemies(int number_of_enemies): enemies_remaining(number_of_enemies){
+    Enemy(float Xi, float Yi){
+        //initialize enemy with given starting position
+        //set vertices based on position
 
     }
     //destructor
-    ~Enemies();
+    ~Enemy();
 
     //where the movement algorithm will be implemented
     void move();
@@ -22,12 +26,11 @@ public:
     float getX();
     float getY();
 
-    bool exists();
-
-    bool check_collision();
+    //bool check_collision();
 
 private:
-int enemies_remaining;
+float x_,y_;
+GLuint VAO_, VBO_;
 };
 
 
