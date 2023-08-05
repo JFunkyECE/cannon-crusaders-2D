@@ -58,7 +58,7 @@ public:
         current_state = GameState::Playing; //change back to start page eventually 
         lastspawn_time = 0.0f; 
         spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
-        enemiesdefeated = 0; //records # of shots fired
+        enemies_defeated = 0; //records # of shots fired
         enemies_on_screen = 0;
     }
 
@@ -121,12 +121,12 @@ public:
         if (enemies_on_screen < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
             enemies_on_screen++;
-            lastSpawnTime = glfwGetTime();
+            lastspawn_time = glfwGetTime();
         }}
     void updateEnemies(){
         //movement algorithm for enemy objects
         //start with just moving straight down
-        for (auto it = (ducks_.begin()) + enemiesdefeated; it != ducks_.end(); ++it) {
+        for (auto it = (ducks_.begin()) + enemies_defeated; it != ducks_.end(); ++it) {
             if (it->isActive()) {
                 it->move(-0.015f,0.0f);
                 // Check if the duck has gone off the bottom of the screen
@@ -137,7 +137,7 @@ public:
         }
     }
     void renderEnemies(){
-        for(int i = enemiesDefeated; i < ducks_.size(); ++i) {
+        for(int i = enemies_defeated; i < ducks_.size(); ++i) {
             if(ducks_[i].isActive()){
             ducks_[i].render();
             }
@@ -160,7 +160,7 @@ float lastshot_time;
 float lastspawn_time; //makes sure enemies spawn in reasonable time of one another
 float spawn_interval; // to make sure enemies dont spawn in too quick succession
 std::vector<Ducks::Enemy> ducks_; //stores cannonball data
-int enemiesdefeated; //records # of shots fired
+int enemies_defeated; //records # of shots fired
 int enemies_on_screen;
 };
 
