@@ -1,0 +1,7 @@
+name "Jacob Funk"
+student_id "V00933178"
+email "jacobfunk@uvic.ca"
+term "2023-05"
+course "SENG475"
+section "T01"
+assignment "cpp_project"
