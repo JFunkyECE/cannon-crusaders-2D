@@ -44,7 +44,7 @@ public:
 
     ~Game() {
        delete my_tank;
-       glfwDestroyWindow(window);
+       glfwDestroyWindow(window_);
        glfwTerminate();
     }
 
