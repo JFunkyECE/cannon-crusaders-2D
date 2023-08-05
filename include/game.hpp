@@ -27,7 +27,7 @@ public:
     }
 
 
-    ~Game();
+    ~Game() = default;
 
     //resets gamestate and data associated with game
     void Init(){
