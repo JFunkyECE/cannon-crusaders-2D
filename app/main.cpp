@@ -1,28 +1,28 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "tank.hpp"
+//#include "tank.hpp"
 #include "game.hpp"
 #include <iostream>
 
 
-void Keyboard_Input(GLFWwindow* window, tank::Tank& tank, float& lastshot_time){
-    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-            tank.move(-0.01f);  // Move the tank to the left
-        }
-    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-            tank.move(0.01f);  // Move the tank to the right
-        }
-    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
-            float current_time = glfwGetTime(); //gives time in seconds
-            if(current_time - lastshot_time >= 0.2f){ //limit shooting to one per 0.2 seconds or 5 shots per second
-                tank.shoot();
-                lastshot_time = current_time;
-            }
-        }
+// void Keyboard_Input(GLFWwindow* window, tank::Tank& tank, float& lastshot_time){
+//     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+//             tank.move(-0.01f);  // Move the tank to the left
+//         }
+//     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+//             tank.move(0.01f);  // Move the tank to the right
+//         }
+//     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+//             float current_time = glfwGetTime(); //gives time in seconds
+//             if(current_time - lastshot_time >= 0.2f){ //limit shooting to one per 0.2 seconds or 5 shots per second
+//                 tank.shoot();
+//                 lastshot_time = current_time;
+//             }
+//         }
 
-    // add input for pausing game
+//     // add input for pausing game
     
-}
+// }
 
 
 int main(void)
@@ -52,6 +52,7 @@ int main(void)
     // Create Game object
     Game game(window);
 
+    std::cout<<"made it here";
     // //initialize shot timer.
     // float lastshot_time = 0.0f;
 
