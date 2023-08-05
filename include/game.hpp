@@ -17,7 +17,7 @@ public:
         Gameover //game finished, win or lose screen
     };
 
-    Game():current_state(GameState::Playing){
+    Game():current_state(GameState::Playing), my_tank(nullptr){
         /* Initialize the library */
         if (!glfwInit())
             exit(-1);
@@ -35,19 +35,22 @@ public:
                 std::cout << "Failed to initialize GLEW" << std::endl;
                 exit(-1);
             }
-        
+        my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
+
         Init();
     }
 
 
     ~Game() {
+       delete my_tank;
        glfwTerminate();
     }
 
     //resets gamestate and data associated with game
     void Init(){
         // Reset the tank
-        my_tank = tank::Tank();  // This creates a new tank object, effectively resetting it
+        delete my_tank;
+        my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
 
         // Reset other game variables
         lastshot_time = 0.0f;
@@ -82,7 +85,7 @@ public:
                 break;
             case GameState::Playing:
                 // Normal game update logic
-                my_tank.updateCannonballs();
+                my_tank->updateCannonballs();
                 break;
             case GameState::Paused:
                 // Display a pause menu
@@ -96,8 +99,8 @@ public:
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
        
-        my_tank.render();
-        my_tank.renderCannonballs();
+        my_tank->render();
+        my_tank->renderCannonballs();
     }
 
     GLFWwindow* getWindow() const {
@@ -110,7 +113,7 @@ public:
 private:
 GameState current_state;
 GLFWwindow* window_;
-tank::Tank my_tank;
+tank::Tank* my_tank;
 float lastshot_time;
 //add member class for enemies
 
