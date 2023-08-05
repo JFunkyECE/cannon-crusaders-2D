@@ -17,17 +17,32 @@ public:
         Gameover //game finished, win or lose screen
     };
 
-    Game(GLFWwindow* window): window_(window), current_state(GameState::Playing){
-        glewExperimental = GL_TRUE;
-        if (glewInit() != GLEW_OK) {
-            std::cout << "Failed to initialize GLEW" << std::endl;
+    Game():current_state(GameState::Playing){
+        /* Initialize the library */
+        if (!glfwInit())
+            exit(-1);
+        /* Create a windowed mode window and its OpenGL context */
+        window_ = glfwCreateWindow(600, 800, "Cannon Crusaders", NULL, NULL);
+        if (!window_){
+            glfwTerminate(); //need this hear because after initialization
             exit(-1);
         }
+
+        /* Make the window's context current */
+        glfwMakeContextCurrent(window_);
+            glewExperimental = GL_TRUE;
+            if (glewInit() != GLEW_OK) {
+                std::cout << "Failed to initialize GLEW" << std::endl;
+                exit(-1);
+            }
+        
         Init();
     }
 
 
-    ~Game() = default;
+    ~Game() {
+       glfwTerminate();
+    }
 
     //resets gamestate and data associated with game
     void Init(){
@@ -84,6 +99,11 @@ public:
         my_tank.render();
         my_tank.renderCannonballs();
     }
+
+    GLFWwindow* getWindow() const {
+        return window_;
+    } 
+
     void Run();
     void Restart(); //for when player wants to restart game
 

@@ -27,20 +27,7 @@
 
 int main(void)
 {
-    GLFWwindow* window;
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(600, 800, "Cannon Crusaders", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate(); //need this hear because after initialization
-        return -1;
-    }
-
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
+   
 
     // // Initialize GLEW
     // glewExperimental = GL_TRUE;
@@ -51,14 +38,14 @@ int main(void)
     std::cout<<"before";
 
     // Create Game object
-    Game game(window);
+    Game game;
 
     std::cout<<"made it here";
     // //initialize shot timer.
     // float lastshot_time = 0.0f;
 
     /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(game.getWindow()))
     {
         game.Update();
         game.Render();
@@ -75,12 +62,10 @@ int main(void)
         // myTank.renderCannonballs();
 
         /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(game.getWindow());
 
         /* Poll for and process events */
         glfwPollEvents();
     }
-
-    glfwTerminate();
     return 0;
 }
