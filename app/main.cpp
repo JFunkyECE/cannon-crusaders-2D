@@ -1,6 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "tank.hpp"
+#include "game.hpp"
 #include <iostream>
 
 
@@ -27,7 +28,6 @@ void Keyboard_Input(GLFWwindow* window, tank::Tank& tank, float& lastshot_time){
 int main(void)
 {
     GLFWwindow* window;
-
     /* Initialize the library */
     if (!glfwInit())
         return -1;
@@ -42,31 +42,35 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
-    // Initialize GLEW
-    glewExperimental = GL_TRUE;
-    if (glewInit() != GLEW_OK) {
-        std::cout << "Failed to initialize GLEW" << std::endl;
-        return -1;
-    }
+    // // Initialize GLEW
+    // glewExperimental = GL_TRUE;
+    // if (glewInit() != GLEW_OK) {
+    //     std::cout << "Failed to initialize GLEW" << std::endl;
+    //     return -1;
+    // }
 
-    // Create a tank
-    tank::Tank myTank;
-    //initialize shot timer.
-    float lastshot_time = 0.0f;
+    // Create Game object
+    Game game(window);
+
+    // //initialize shot timer.
+    // float lastshot_time = 0.0f;
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
-       
-        Keyboard_Input(window, myTank, lastshot_time);
+        game.update();
+        game.render();
 
-        myTank.updateCannonballs();
-        // Render the tank
-        myTank.render();
-        myTank.renderCannonballs();
+        /* Render here */
+        // glClear(GL_COLOR_BUFFER_BIT);
+        // glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
+       
+        // Keyboard_Input(window, myTank, lastshot_time);
+
+        // myTank.updateCannonballs();
+        // // Render the tank
+        // myTank.render();
+        // myTank.renderCannonballs();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
