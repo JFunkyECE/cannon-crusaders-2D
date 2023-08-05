@@ -11,6 +11,7 @@ namespace tank{
 class Tank{
 public:
     Tank(): cannonballs_fired(0){
+        cannonballs_.reserve(200);
         //initial positions for tank 
         x0= -0.1f;
         y0= -1.0f;
@@ -71,7 +72,7 @@ public:
     }
     void render() const{
         // Bind the VAO and draw the tank and the cannon launcher
-        glColor3f(0.5f,0.5f,0.5f);
+        glColor3f(1.0f,1.0f,1.0f);
         glBindVertexArray(tankVAO);
         glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
         glDrawArrays(GL_QUADS, 0, 4);
@@ -154,8 +155,6 @@ public:
         for (const Cannonballs& cannonball : cannonballs_) {
         if (cannonball.exists()) {
             cannonball.render();
-            glColor3f(0.5f,0.5f,0.5f);
-
         }
         }
     }
