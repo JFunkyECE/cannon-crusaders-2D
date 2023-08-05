@@ -38,7 +38,14 @@ public:
             }
         my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
         ducks_.reserve(50); //reserve enough space for duck objects
-        Init();
+        //Init();
+        ducks_.clear();
+        lastshot_time = 0.0f;
+        current_state = GameState::Playing; //change back to start page eventually 
+        lastspawn_time = 0.0f; 
+        spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
+        enemies_defeated = 0; //records # of shots fired
+        enemies_on_screen = 0;
     }
 
 
