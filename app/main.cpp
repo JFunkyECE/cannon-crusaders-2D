@@ -48,6 +48,7 @@ int main(void)
     //     std::cout << "Failed to initialize GLEW" << std::endl;
     //     return -1;
     // }
+    std::cout<<"before";
 
     // Create Game object
     Game game(window);
