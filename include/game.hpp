@@ -52,10 +52,14 @@ public:
         // Reset the tank
         delete my_tank;
         my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
-
         // Reset other game variables
+        ducks_.clear();
         lastshot_time = 0.0f;
-        current_state = GameState::Playing; //will change back to start, just to make sure it works right now
+        current_state = GameState::Playing; //change back to start page eventually 
+        lastspawn_time = 0.0f; 
+        spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
+        enemiesdefeated = 0; //records # of shots fired
+        enemies_on_screen = 0;
     }
 
     //processes keyboard inputs
@@ -79,7 +83,7 @@ public:
     void Update(){
 
         ProcessInput();
-
+        spawnEnemy();
         switch (current_state) {
             case GameState::Start:
                 // Maybe display a start screen or instructions
@@ -87,6 +91,7 @@ public:
             case GameState::Playing:
                 // Normal game update logic
                 my_tank->updateCannonballs();
+                updateEnemies();
                 break;
             case GameState::Paused:
                 // Display a pause menu
@@ -102,6 +107,7 @@ public:
        
         my_tank->render();
         my_tank->renderCannonballs();
+        renderEnemies();
     }
 
     GLFWwindow* getWindow() const {
@@ -110,16 +116,52 @@ public:
 
     void Restart(); //for when player wants to restart game
 
+
+    void spawnEnemy(){
+        if (enemies_on_screen < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
+            ducks_.emplace_back();
+            enemies_on_screen++;
+            lastSpawnTime = glfwGetTime();
+        }}
+    void updateEnemies(){
+        //movement algorithm for enemy objects
+        //start with just moving straight down
+        for (auto it = (ducks_.begin()) + enemiesdefeated; it != ducks_.end(); ++it) {
+            if (it->isActive()) {
+                it->move(-0.015f,0.0f);
+                // Check if the duck has gone off the bottom of the screen
+                if (it->getY() < -1.0f) {
+                    it->setActive(false);
+                }
+            } 
+        }
+    }
+    void renderEnemies(){
+        for(int i = enemiesDefeated; i < ducks_.size(); ++i) {
+            if(ducks_[i].isActive()){
+            ducks_[i].render();
+            }
+        }
+    }
+    int live_enemies() const{
+        int count = 0;
+        for (const Ducks::Enemy& duckss : ducks_) {
+        if (duckss.isActive()) {
+            ++count;
+        }
+        }
+        return count; 
+    }
 private:
 GameState current_state;
 GLFWwindow* window_;
 tank::Tank* my_tank;
 float lastshot_time;
 float lastspawn_time; //makes sure enemies spawn in reasonable time of one another
+float spawn_interval; // to make sure enemies dont spawn in too quick succession
 std::vector<Ducks::Enemy> ducks_; //stores cannonball data
 int enemiesdefeated; //records # of shots fired
-int enemiesonscreen;//add member class for enemies
-
+int enemies_on_screen;
 };
 
 
