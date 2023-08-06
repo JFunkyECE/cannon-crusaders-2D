@@ -83,32 +83,13 @@ public:
         glDrawArrays(GL_QUADS, 0, 4);
         }
     //called when the user presses a or d to move 
-    void move(int dx){
-        //more complex checking of boundaries so can
-        //still move quickly and reach the endpoints
-        int increment;
-        if (dx < 0){
-            increment = 1;
-            while(dx != 0){
-                dx += increment;
-                if(x0 + dx >= -1.0f && x0 + dx <= 1.0f - width_){
-                    x0 -= 0.01f;
-                    x1 -= 0.01f;
-                }
+    void move(float dx){
+        if(x0 + dx >= -1.0f && x0 + dx <= 1.0f - width_){
+            x0 += dx;
+            x1 += dx;
+            //now need to update vertices for tank
+            update_vertices();
         }
-        }else {
-            increment = -1;
-            while(dx != 0){
-                dx += increment;
-                if(x0 + dx >= -1.0f && x0 + dx <= 1.0f - width_){
-                    x0 += 0.01f;
-                    x1 += 0.01f;
-                }
-        }
-        }
-        
-        update_vertices();
-
     }
     //updates tank and launcher vertices when move function invoked
     void update_vertices(){
