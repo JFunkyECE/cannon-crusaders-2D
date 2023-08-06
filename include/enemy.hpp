@@ -66,17 +66,37 @@ public:
     //straight line down for now, will implement more complex movement once collision and other game aspects made.
     void move( float dy, float dx){
         y_ += dy;
-        
+        x_ += dx;
         // Update the vertices of the ducky
-        float vertices[] = {
-            x_ , y_ - .15f , //bottom left
-            x_ , y_ , //top left
-            x_ + .15f, y_ , //top right
-            x_ + 0.15f, y_ - .15f //bottom right
+        float duck_vertices[] = {
+            //body vertices, 3 sections
+            x_ + 0.04f, y_ - 0.15f,            //bottom left
+            x_ + 0.04f, y_,                    //top left
+            x_ + 0.1f, y_ ,                    //top right
+            x_ + 0.1f, y_ - 0.15f,             //bottom right
+                                
+            x_ + 0.04f, y_ - 0.15f,            //bottom left
+            x_ + 0.04f, y_ - 0.09f,            //top left
+            x_ + 0.15f, y_ - 0.09f,            //top right
+            x_ + 0.15f, y_ - 0.15f,            //bottom right
+
+            x_ + 0.12f, y_ - 0.15f,            //bottom left
+            x_ + 0.12f, y_ - 0.07f,            //top left
+            x_ + 0.15f, y_ - 0.07f,            //top right
+            x_ + 0.15f, y_ - 0.15f,            //bottom right
+            //eye vertices
+            x_ + 0.06f, y_ - 0.06f,            //bottom left
+            x_ + 0.06f, y_ - 0.04f,            //top left
+            x_ + 0.08f, y_ - 0.04f,            //top right
+            x_ + 0.08f, y_ - 0.06f,            //bottom right
+            //beak vertices
+            x_,y_-0.075f,           //middle
+            x_ + 0.04f, y_ - 0.05f, //top right
+            x_ + 0.04f, y_ - 0.1f   //bottom right
         };
         glBindVertexArray(VAO_);
         glBindBuffer(GL_ARRAY_BUFFER, VBO_);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(duck_vertices), duck_vertices);
 
     }
 
