@@ -88,7 +88,7 @@ public:
                     ". After moving it would be "
                     << x0 + dx  <<std::endl;
         
-        if(x0 + dx > -1.0f && x0 + dx < 1.0f - width_){
+        if(x0 + dx > -1.01f && x0 + dx < 1.01f - width_){
             x0 += dx;
             x1 += dx;
             //now need to update vertices for tank
