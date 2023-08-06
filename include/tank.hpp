@@ -85,7 +85,7 @@ public:
     //called when the user presses a or d to move 
     void move(float dx){
         std::cout << "Xo is " << x0 <<std::endl;
-        if(x0 + dx >= -1.0f && x0 + dx <= 1.0f - width_){
+        if(x0 + dx > -1.0f && x0 + dx < 1.0f - width_){
             x0 += dx;
             x1 += dx;
             //now need to update vertices for tank
@@ -168,6 +168,7 @@ public:
         return count; 
     }
     std::vector<Cannonballs> Cannonballpositions(){return cannonballs_;}
+
 private:
     float x0,y0,x1,y1; //for position of tank and cannon
     float width_, height_; //for sizing tank
