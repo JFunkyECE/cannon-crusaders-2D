@@ -85,11 +85,14 @@ public:
                 lastshot_time = current_time;
             }
         }
+        if (glfwGetKey(window_, GLFW_KEY_R) == GLFW_PRESS) {
+           Restart();
+        }
 
     // add input for pausing game
     }
     void Update(){
-
+        
         ProcessInput();
         spawnEnemy();
         switch (current_state) {
@@ -122,7 +125,9 @@ public:
         return window_;
     } 
 
-    void Restart(); //for when player wants to restart game
+    void Restart(){
+        Init();
+    } //for when player wants to restart game
 
 
     void spawnEnemy(){
