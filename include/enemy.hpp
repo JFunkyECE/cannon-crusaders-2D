@@ -18,29 +18,40 @@ public:
         static std::uniform_real_distribution<> dis(-1.0, 0.85);
         x_ = dis(gen); //gives x random number between -1.0 and 0.85
 
-        //initialize enemy with given starting position
-        //set vertices based on position
-        //vertices for body 1
-        //vertices for body 2
-        //vertices for body 3
-        //vertices for beak
-        //vertices for eye
 
-        //initially enemy will be .15 by .15 square just to verify that implementation of spawning works.
-        float duckbody_vertices[] = {
-            x_ , y_ - .15f , //bottom left
-            x_ , y_ , //top left
-            x_ + .15f, y_ , //top right
-            x_ + 0.15f, y_ - .15f //bottom right
+        float duck_vertices[] = {
+            //body vertices, 3 sections
+            x_ + 0.04f, y_ - 0.15f,            //bottom left
+            x_ + 0.04f, y_,                    //top left
+            x_ + 0.1f, y_ ,                    //top right
+            x_ + 0.1f, y_ - 0.15f,             //bottom right
+                                
+            x_ + 0.04f, y_ - 0.15f,            //bottom left
+            x_ + 0.04f, y_ - 0.09f,            //top left
+            x_ + 0.15f, y_ - 0.09f,            //top right
+            x_ + 0.15f, y_ - 0.15f,            //bottom right
 
+            x_ + 0.12f, y_ - 0.15f,            //bottom left
+            x_ + 0.12f, y_ - 0.07f,            //top left
+            x_ + 0.15f, y_ - 0.07f,            //top right
+            x_ + 0.15f, y_ - 0.15f,            //bottom right
+            //eye vertices
+            x_ + 0.06f, y_ - 0.06f,            //bottom left
+            x_ + 0.06f, y_ - 0.04f,            //top left
+            x_ + 0.08f, y_ - 0.04f,            //top right
+            x_ + 0.08f, y_ - 0.06f,            //bottom right
+            //beak vertices
+            x_,y_-0.075f,           //middle
+            x_ + 0.04f, y_ - 0.05f, //top right
+            x_ + 0.04f, y_ - 0.1f   //bottom right
         };
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
 
         glGenBuffers(1, &VBO_);
         glBindBuffer(GL_ARRAY_BUFFER, VBO_);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(duck_vertices), duck_vertices, GL_STATIC_DRAW);
 
-        glBufferData(GL_ARRAY_BUFFER, sizeof(duckbody_vertices), duckbody_vertices, GL_STATIC_DRAW);
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
 
@@ -70,9 +81,19 @@ public:
     }
 
     void render(){
-        glColor3f(1.0f,1.0f,0.0f);
         glBindVertexArray(VAO_);
-        glDrawArrays(GL_QUADS,0,4);
+        //draw yellow body of duck
+        glColor3f(1.0f,1.0f,0.0f);
+        for(int i = 0; i < 3; ++i){
+        glDrawArrays(GL_QUADS,i*4,4);
+        }
+        //draw black eye
+        glColor3f(0.0f,0.0f,0.0f);
+        glDrawArrays(GL_QUADS, 12, 4);
+
+        //draw orange beak
+        glColor3f(1.0f, 0.5f, 0.0f);
+        glDrawArrays(GL_TRIANGLES, 16, 3);
     }
 
     float getX() const{ return x_;}
