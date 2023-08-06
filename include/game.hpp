@@ -94,7 +94,7 @@ public:
                         lastshot_time = current_time;
                     }
                 }
-                if (glfwGetKey(window_, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+                if (glfwGetKey(window_, GLFW_KEY_P) == GLFW_PRESS) {
                     current_state = GameState::Paused; // Pause the game
                 }
                 break;
