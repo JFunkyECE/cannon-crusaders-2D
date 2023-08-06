@@ -84,7 +84,8 @@ public:
         }
     //called when the user presses a or d to move 
     void move(float dx){
-        if(x0 + dx >= -1.009f && x0 + dx <= 1.009f - width_){
+        std::cout << "Xo is " x0 <<std::endl;
+        if(x0 + dx >= -1.0f && x0 + dx <= 1.0f - width_){
             x0 += dx;
             x1 += dx;
             //now need to update vertices for tank
