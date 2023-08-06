@@ -72,7 +72,6 @@ public:
     //processes keyboard inputs depending on what state the game is in
     void ProcessInput(){
         switch (current_state) {
-
             case GameState::Start:
                 if (glfwGetKey(window_, GLFW_KEY_ENTER) == GLFW_PRESS) {
                     Init(); //ensures data resets    
@@ -82,10 +81,10 @@ public:
 
             case GameState::Playing:
                 if (glfwGetKey(window_, GLFW_KEY_LEFT) == GLFW_PRESS) {
-                    my_tank->move(-0.04f);  // Move the tank to the left
+                    my_tank->move(-0.05f);  // Move the tank to the left
                 }
                 if (glfwGetKey(window_, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-                    my_tank->move(0.04f);  // Move the tank to the right
+                    my_tank->move(0.05f);  // Move the tank to the right
                 }
                 if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
                     float current_time = glfwGetTime(); //gives time in seconds
