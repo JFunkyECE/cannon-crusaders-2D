@@ -154,11 +154,6 @@ public:
                 break;
             case GameState::Gameover:
                 // Display game over screen
-                if(outcome == true){
-                    std::cout << "win";
-                }else{
-                    std::cout<<"lose";
-                }
                 //menu::gameover()
                 break;
         }
