@@ -217,6 +217,7 @@ public:
                 if (it->getY() < -1.0f) {
                     game_over = true;
                     outcome = false;
+                    current_state = GameState::Gameover;
                 }
             } 
         }
