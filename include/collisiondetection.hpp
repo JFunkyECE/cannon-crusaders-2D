@@ -81,6 +81,7 @@ bool Hit_Tank(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank){
                 }
             }
     }
+    return false;
 }
 
 bool Collision_detected(const Ducks::Enemy& duck, const tank::Tank* my_tank){

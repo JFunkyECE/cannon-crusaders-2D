@@ -129,7 +129,12 @@ public:
     float getY(){
         return y0;
     }
-
+    float getX() const{
+        return x0;
+    }
+    float getY() const{
+        return y0;
+    }
     //adds a cannonball to the vector cannonballs_
     void shoot(){
         int cannonballs_onscreen = 5;
