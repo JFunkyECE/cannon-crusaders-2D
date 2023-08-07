@@ -18,7 +18,7 @@ void Hit_Duck(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank, int& enemi
             for(Ducks::Enemy& duck: ducks_){
                 if(duck.isActive()){
                     //detect collision between them here
-                    if(Collision_detected(cannonball,duck)){
+                    if(Collision_detected(duck,cannonball)){
                         duck.setActive(false);
                         ++enemies_defeated;
                         --enemies_on_screen;
