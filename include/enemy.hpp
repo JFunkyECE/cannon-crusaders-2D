@@ -13,7 +13,7 @@ public:
 
     //need constructor that reserves based on difficulty, ie either 20 or 50 enemies.
     Enemy(): y_(1.0f), is_active(true){
-        
+
         static std::random_device rd;  // Will be used to obtain a seed for the random number engine
         static std::mt19937 gen(rd());
         static std::uniform_real_distribution<> dis(-1.0, 0.85);
@@ -65,9 +65,9 @@ public:
 
     //where the movement algorithm will be implemented
     //straight line down for now, will implement more complex movement once collision and other game aspects made.
-    void move( float dy, float dx){
+    void move( float dy){
         y_ += dy;
-        x_ += dx;
+        //x_ += dx; will add if time
         // Update the vertices of the ducky
         float duck_vertices[] = {
             //body vertices, 3 sections
