@@ -197,7 +197,7 @@ public:
         //start with just moving straight down
         for (auto it = (ducks_.begin()); it != ducks_.end(); ++it) {
             if (it->isActive()) {
-                it->move(-0.009f);
+                it->move(-0.015f);
                 // Check if the duck has gone off the bottom of the screen
                 if (it->getY() < -1.0f) {
                     it->setActive(false);
