@@ -64,7 +64,6 @@ bool Collision_detected(const Ducks::Enemy& duck, const Cannonballs& cannonball)
                  x_cannonball + wh_cannonball > x_body &&
                  y_cannonball < y_body + h_body &&
                  y_cannonball + wh_cannonball > y_body);
-    std::cout<< beak << " " << body << std::endl;
     return beak || body;
 }
 //second function checks whether a ducks has reached the end or if duck has made contact with tank
