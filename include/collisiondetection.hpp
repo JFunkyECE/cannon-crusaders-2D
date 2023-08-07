@@ -101,8 +101,8 @@ bool Collision_detected(const Ducks::Enemy& duck, const tank::Tank* my_tank){
     //tank vertices
     float w_tank = 0.20f;
     float h_tank = 0.25f;
-    float x_tank = my_tank.getX();
-    float y_tank = my_tank.getY();
+    float x_tank = my_tank->getX();
+    float y_tank = my_tank->getY();
 
     //AABB collision detection
     bool beak = (x_tank < x_beak + w_beak &&
@@ -119,6 +119,7 @@ bool Collision_detected(const Ducks::Enemy& duck, const tank::Tank* my_tank){
         std::cout<< "collision detected between duck and tank, user loses";
     }
     return beak || body;
+}
 };
 }
 
