@@ -187,7 +187,7 @@ public:
 
 
     void spawnEnemy(){
-        if (enemies_on_screen < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
+        if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
             enemies_on_screen++;
             lastspawn_time = glfwGetTime();
