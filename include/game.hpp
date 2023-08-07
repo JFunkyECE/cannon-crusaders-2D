@@ -137,16 +137,17 @@ public:
                 //check for game ending duck movement
                 detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
                 game_over = detector.Hit_Tank(ducks_, my_tank);
-                spawnEnemy();
-                my_tank->updateCannonballs();
-                updateEnemies();
+                if(game_over == true){
+                    current_state = GameState::Gameover;
+                    break;
+                }
                 if(enemies_defeated == 20){
                     outcome = true;
                     game_over = true;
                 }
-                if(game_over == true){
-                    current_state = GameState::Gameover;
-                }
+                spawnEnemy();
+                my_tank->updateCannonballs();
+                updateEnemies();
                 break;
             case GameState::Paused:
                 // Display a pause menu
