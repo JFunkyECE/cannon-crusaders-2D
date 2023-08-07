@@ -120,9 +120,10 @@ public:
     // add input for pausing game
 
     void Update(){
-        
+        collisions::CollisionDetection detector;
         ProcessInput();
         switch (current_state) {
+            
             case GameState::Start:
                 //implement startmenu function that displays start menu info
                 //menu::startmenu();
@@ -131,7 +132,6 @@ public:
                 // Normal game update logic
                 //check for collisions here
                 //check for game ending duck movement
-                collisions::CollisionDetection detector;
                 detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
                 spawnEnemy();
                 my_tank->updateCannonballs();

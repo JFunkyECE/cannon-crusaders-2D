@@ -84,9 +84,9 @@ public:
         }
     //called when the user presses a or d to move 
     void move(float dx){
-        std::cout << "Xo is " << x0 << 
-                    ". After moving it would be "
-                    << x0 + dx  <<std::endl;
+       // std::cout << "Xo is " << x0 << 
+       //             ". After moving it would be "
+       //             << x0 + dx  <<std::endl;
         
         if(x0 + dx > -1.01f && x0 + dx < 1.01f - width_){
             x0 += dx;
@@ -133,12 +133,12 @@ public:
     //adds a cannonball to the vector cannonballs_
     void shoot(){
         int cannonballs_onscreen = 5;
-        std::cout<< "Live Cannonballs on screen #"<<live_cannonballs() << std::endl;
+        //std::cout<< "Live Cannonballs on screen #"<<live_cannonballs() << std::endl;
 
         if(live_cannonballs() < cannonballs_onscreen && cannonballs_fired < 200){
                 cannonballs_.emplace_back(x1,y1);
                 ++cannonballs_fired;
-                std::cout<< "Cannonball #"<<cannonballs_fired<<" fired" << std::endl;
+                //std::cout<< "Cannonball #"<<cannonballs_fired<<" fired" << std::endl;
         } else if (cannonballs_fired >= 200){
             //add something here to end the current game.
         }
