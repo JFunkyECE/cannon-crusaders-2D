@@ -132,7 +132,8 @@ public:
                 //check for collisions here
                 //check for game ending duck movement
                 collisions::CollisionDetection detector;
-                detector.Hit_Duck(ducks_, my_tank, enemies_defeated);                spawnEnemy();
+                detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
+                spawnEnemy();
                 my_tank->updateCannonballs();
                 updateEnemies();
                 break;
