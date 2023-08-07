@@ -1,10 +1,17 @@
 #ifndef menus_hpp
 #define menus_hpp
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
+namespace menu{
+
+class Menu{
 //purpose of this class is to contain graphic rendering for
 //start menu, pause menu, and end screen 
 
+    Menu(){
 
+    }
 //start menu
 
 //contains the following text
@@ -38,5 +45,8 @@
 //press R to restart
 //press M to go back to menu
 //press Q to quit application
-
+private:
+GLuint VAO_, VBO_;
+};
+}
 #endif
