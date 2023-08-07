@@ -13,6 +13,7 @@ public:
 
     //need constructor that reserves based on difficulty, ie either 20 or 50 enemies.
     Enemy(): y_(1.0f), is_active(true){
+        
         static std::random_device rd;  // Will be used to obtain a seed for the random number engine
         static std::mt19937 gen(rd());
         static std::uniform_real_distribution<> dis(-1.0, 0.85);

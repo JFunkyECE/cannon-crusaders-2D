@@ -170,7 +170,7 @@ public:
         }
         return count; 
     }
-    std::vector<Cannonballs> Cannonballpositions(){return cannonballs_;}
+    std::vector<Cannonballs>& Cannonballpositions(){return cannonballs_;}
 
 private:
     float x0,y0,x1,y1; //for position of tank and cannon

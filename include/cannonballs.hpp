@@ -13,7 +13,7 @@ public:
         float cannonball_vertices[] = {
             x_ , y_ , //bottom left
             x_ , y_ + 0.04f, //top left
-            x_ + .04f, y_ + 0.04f, //top right
+            x_ + 0.04f, y_ + 0.04f, //top right
             x_ + 0.04f, y_ //bottom right
 
         };

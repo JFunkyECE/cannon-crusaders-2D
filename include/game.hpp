@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <tank.hpp>
 #include <enemy.hpp>
+#include <collisiondetection.hpp>
 #include <vector>
 
 class Game{
@@ -128,6 +129,9 @@ public:
                 break;
             case GameState::Playing:
                 // Normal game update logic
+                //check for collisions here
+                //check for game ending duck movement
+                collisions::CollisionDetection::Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
                 spawnEnemy();
                 my_tank->updateCannonballs();
                 updateEnemies();
@@ -138,6 +142,7 @@ public:
                 break;
             case GameState::Gameover:
                 // Display game over screen
+                std::cout<<"you lose";
                 //menu::gameover()
                 break;
         }
@@ -202,7 +207,7 @@ public:
     void renderEnemies(){
         for(int i = enemies_defeated; i < ducks_.size(); ++i) {
             if(ducks_[i].isActive()){
-            ducks_[i].render();
+                ducks_[i].render();
             }
         }
     }
