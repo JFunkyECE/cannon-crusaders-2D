@@ -47,7 +47,7 @@ bool Collision_detected(const Ducks::Enemy& duck, const Cannonballs& cannonball)
 
     float w_body = 0.11f;
     float h_body = 0.15f;
-    float x_body = x_duck - 0.04f;
+    float x_body = x_duck + 0.04f;
     float y_body = y_duck;
 
     float wh_cannonball = 0.04f;
