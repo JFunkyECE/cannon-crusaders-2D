@@ -195,7 +195,7 @@ public:
     void updateEnemies(){
         //movement algorithm for enemy objects
         //start with just moving straight down
-        for (auto it = (ducks_.begin()) + enemies_defeated; it != ducks_.end(); ++it) {
+        for (auto it = (ducks_.begin()); it != ducks_.end(); ++it) {
             if (it->isActive()) {
                 it->move(-0.009f);
                 // Check if the duck has gone off the bottom of the screen
