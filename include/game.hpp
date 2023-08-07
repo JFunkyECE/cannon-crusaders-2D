@@ -24,6 +24,7 @@ public:
         if (!glfwInit())
             exit(-1);
         /* Create a windowed mode window and its OpenGL context */
+        glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
         window_ = glfwCreateWindow(600, 800, "Cannon Crusaders", NULL, NULL);
         if (!window_){
             glfwTerminate(); //need this hear because after initialization
