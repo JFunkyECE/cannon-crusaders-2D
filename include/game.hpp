@@ -139,12 +139,11 @@ public:
                 my_tank->updateCannonballs();
                 updateEnemies();
                 detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
-                game_over = detector.Hit_Tank(ducks_, my_tank);
                 if(enemies_defeated == 20){
                     outcome = true;
                     game_over = true;
                 }
-                if(game_over == true){
+                if(game_over == true || detector.Hit_Tank(ducks_, my_tank)){
                     current_state = GameState::Gameover;
                     if(outcome == false){
                         std::cout << "loser" << std::endl;
@@ -217,7 +216,6 @@ public:
                 if (it->getY() < -1.0f) {
                     game_over = true;
                     outcome = false;
-                    current_state = GameState::Gameover;
                 }
             } 
         }
