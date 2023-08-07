@@ -47,6 +47,7 @@ public:
         spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
         enemies_defeated = 0; //records # of shots fired
         enemies_on_screen = 0;
+        game_over = false;
     }
 
 
@@ -69,6 +70,7 @@ public:
         spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
         enemies_defeated = 0; //records # of shots fired
         enemies_on_screen = 0;
+        game_over = false;
     }
 
     //processes keyboard inputs depending on what state the game is in
@@ -134,9 +136,17 @@ public:
                 //check for collisions here
                 //check for game ending duck movement
                 detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
+                game_over = detector.Hit_Tank(ducks_, my_tank);
                 spawnEnemy();
                 my_tank->updateCannonballs();
                 updateEnemies();
+                if(enemies_defeated == 20){
+                    outcome = true;
+                    game_over = true;
+                }
+                if(game_over == true){
+                    current_state = GameState::Gameover;
+                }
                 break;
             case GameState::Paused:
                 // Display a pause menu
@@ -144,7 +154,11 @@ public:
                 break;
             case GameState::Gameover:
                 // Display game over screen
-                std::cout<<"you lose";
+                if(outcome == true){
+                    std::cout << "win";
+                }else{
+                    std::cout<<"lose";
+                }
                 //menu::gameover()
                 break;
         }
@@ -201,7 +215,8 @@ public:
                 it->move(-0.015f);
                 // Check if the duck has gone off the bottom of the screen
                 if (it->getY() < -1.0f) {
-                    it->setActive(false);
+                    game_over = true;
+                    outcome = false;
                 }
             } 
         }
@@ -222,6 +237,8 @@ public:
         }
         return count; 
     }
+
+
 private:
 GameState current_state;
 GLFWwindow* window_;
@@ -232,6 +249,8 @@ float spawn_interval; // to make sure enemies dont spawn in too quick succession
 std::vector<Ducks::Enemy> ducks_; //stores cannonball data
 int enemies_defeated; //for completion of game purpose
 int enemies_on_screen;
+bool game_over;
+bool outcome;
 };
 
 
