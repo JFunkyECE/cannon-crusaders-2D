@@ -212,6 +212,7 @@ public:
                 if (it->getY() < -1.0f) {
                     game_over = true;
                     outcome = false;
+                    std::cout<< "duck made it past tank: loser" << std::endl;
                 }
             } 
         }
