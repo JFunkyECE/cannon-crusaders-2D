@@ -64,10 +64,10 @@ public:
     void setExists(bool exists) {
         exists_ = exists;
     }
-    float getX(){
+    float getX() const{
         return x_;
     }
-    float getY(){
+    float getY() const{
         return y_; //give y coord of bottom of cannonball
     }
 private:
