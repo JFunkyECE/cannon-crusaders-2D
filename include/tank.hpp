@@ -142,7 +142,7 @@ public:
                 std::cout<< "Cannonball #"<<cannonballs_fired<<" fired" << std::endl;
         } else if (cannonballs_fired >= 200){
             cannonballs_.clear();  
-            cannonballs_.reserve(200);      
+            cannonballs_fired = 0;      
             }
     }
     void updateCannonballs(){
