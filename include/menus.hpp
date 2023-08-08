@@ -18,6 +18,7 @@ namespace menu{
     };
 
 class Menu{
+public:
 //purpose of this class is to contain graphic rendering for
 //start menu, pause menu, and end screen 
 
