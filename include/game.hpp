@@ -1,12 +1,12 @@
 #ifndef game_hpp
 #define game_hpp
-#include "menus.hpp"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <tank.hpp>
 #include <enemy.hpp>
 #include <collisiondetection.hpp>
 #include <vector>
+#include "menus.hpp"
 
 class Game{
 
@@ -126,11 +126,12 @@ public:
     void Update(){
         collisions::CollisionDetection detector;
         ProcessInput();
+        Menu_.updateMenu(current_state);
         switch (current_state) {
             
             case GameState::Start:
                 //implement startmenu function that displays start menu info
-                //menu::startmenu();
+                
                 break;
             case GameState::Playing:
                 // Normal game update logic
@@ -164,31 +165,24 @@ public:
         }
     }
     void Render(){
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(0.0f, 0.5f, 0.0f, 1.0f);
         //create menu object here
         switch (current_state) {
             case GameState::Start:
-               glClear(GL_COLOR_BUFFER_BIT);
-               glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
-               //textrender.renderStartMenu();
-               //where we will call render function;
+                Menu_.renderMenu(current_state);
                 break;
             case GameState::Playing:
-               glClear(GL_COLOR_BUFFER_BIT);
-               glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
                my_tank->render();
                my_tank->renderCannonballs();
                renderEnemies();
-               //where we will call render function
+               Menu_.renderMenu(current_state);
                 break;
             case GameState::Paused:
-               glClear(GL_COLOR_BUFFER_BIT);
-               glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
-                //where we will call render function
+                Menu_.renderMenu(current_state);
                 break;
             case GameState::Gameover:
-               glClear(GL_COLOR_BUFFER_BIT);
-               glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
-               //where we will call render function
+                Menu_.renderMenu(current_state);
                 break;
         }
         
@@ -256,7 +250,7 @@ int enemies_defeated; //for completion of game purpose
 int enemies_on_screen;
 bool game_over;
 bool outcome;
-//menu::Menu textrender;
+menu::Menu Menu_;
 };
 
 

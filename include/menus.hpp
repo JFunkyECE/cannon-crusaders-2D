@@ -2,7 +2,7 @@
 #define menus_hpp
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
+#include "game.hpp"
 
 
 namespace menu{
@@ -12,22 +12,8 @@ public:
 //purpose of this class is to contain graphic rendering for
 //start menu, pause menu, and end screen 
 
-    Menu(): x_(-1.0f), y_(1.0f){
-        glGenVertexArrays(1, &VAO_);
-        glBindVertexArray(VAO_);
-        glGenBuffers(1, &VBO_);
-    }
-
-    ~Menu(){
-        glDeleteBuffers(1, &VBO_);
-        glDeleteVertexArrays(1, &VAO_);
-    }
-
-//start menu
-    void renderStartMenu(){
-
-        //create vertice for CANNON
-        float Cannon_Vertices[] = {
+    Menu(): x_(-1.0f), y_(1.0f){  
+        float Vertices[] = {
                 x_, y_,
                 x_ + 0.1f, y_,
                 x_ + 0.1f, y_ - 0.025f,
@@ -43,41 +29,56 @@ public:
                 x_ + 0.1f, y_ - 0.1f,   
                 x_, y_ - 0.1f              
         };
-        glBindBuffer(GL_ARRAY_BUFFER, VBO_);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(Cannon_Vertices), Cannon_Vertices, GL_STATIC_DRAW);
+        glGenVertexArrays(1, &VAO_);
+        glBindVertexArray(VAO_);
 
-        // Define how to interpret the vertex data
+        glGenBuffers(1, &VBO_);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
 
-        // Draw the "C"
+    }
+
+    ~Menu(){
+        glDeleteBuffers(1, &VBO_);
+        glDeleteVertexArrays(1, &VAO_);
+    }
+
+    void updateMenu(Game::GameState current){
+        //this is where depending on the currentstate we will alter vertices
+        if(last_state == current){
+            return;
+        }else{
+            //add other changes to vertices here
+        }
+
+
+        //update laststate to currentstate 
+        last_state = current;
+    }
+
+
+//start menu
+    void renderMenu(Game::GameState gamestate){
         glBindVertexArray(VAO_);
-        glDrawArrays(GL_QUADS, 0, 16);
-
-        // Optionally, unbind the VBO and VAO
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
-        //create vertice for CRUSADERS
-
-
-        //create vertice for START: ENTER
-
-        //CONTROLS
-        //MOVE:  ARROWS
-        //PAUSE: P
-        //SHOOT: SPACE
+        glColor3f(1.0f,1.0f,1.0f);
+        for(int i = 0; i < 3; ++i){
+        glDrawArrays(GL_QUADS,i*4,4);
+        }
     }
 //contains the following text
 //      Cannon Crusaders
 //
 //      Start: Press ENTER
 //      Quit: Press Q
-//      How to Play
+//      Controls
 //      -> move right
 //      <- move left
 //      SPACE shoot
 
-
+    void renderStart();
 //ingame
     void renderInGame();
 //enemies left counter thats it
@@ -105,6 +106,7 @@ public:
 private:
 GLuint VAO_, VBO_;
 float x_,y_;
+Game::GameState last_state;
 };
 
 }
