@@ -169,7 +169,7 @@ public:
             case GameState::Start:
                glClear(GL_COLOR_BUFFER_BIT);
                glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
-               textrender.renderStartMenu();
+               //textrender.renderStartMenu();
                //where we will call render function;
                 break;
             case GameState::Playing:
@@ -256,7 +256,7 @@ int enemies_defeated; //for completion of game purpose
 int enemies_on_screen;
 bool game_over;
 bool outcome;
-menu::Menu textrender;
+//menu::Menu textrender;
 };
 
 
