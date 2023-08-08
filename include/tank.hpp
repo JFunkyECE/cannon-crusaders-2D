@@ -132,7 +132,7 @@ public:
     }
     //adds a cannonball to the vector cannonballs_
     void shoot(){
-        int cannonballs_onscreen = 5;
+        int cannonballs_onscreen = 40;
         //std::cout<< "Live Cannonballs on screen #"<<live_cannonballs() << std::endl;
         if(cannonballs_.size() == 200){
             cannonballs_.clear();
