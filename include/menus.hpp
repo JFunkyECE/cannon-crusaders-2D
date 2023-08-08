@@ -79,6 +79,15 @@ class Menu{
         FT_Done_FreeType(ft_);
     }
 
+
+    ~Menu(){
+        glDeleteVertexArrays(1, &VAO_);
+        glDeleteBuffers(1, &VBO_);
+        for (auto &pair : characters_) {
+            glDeleteTextures(1, &pair.second.textureID);
+        }
+    }
+
 //start menu
     void renderStartMenu();
 //contains the following text
