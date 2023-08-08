@@ -1,5 +1,6 @@
 #ifndef game_hpp
 #define game_hpp
+#include "menus.hpp"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <tank.hpp>
@@ -254,6 +255,7 @@ int enemies_defeated; //for completion of game purpose
 int enemies_on_screen;
 bool game_over;
 bool outcome;
+menu::Menu textrender;
 };
 
 
