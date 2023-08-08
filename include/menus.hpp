@@ -12,7 +12,7 @@ public:
 //purpose of this class is to contain graphic rendering for
 //start menu, pause menu, and end screen 
 
-    Menu(): x_(-1.0f), y_(1.0f), laststate(0){  
+    Menu(): x_(-1.0f), y_(1.0f), currentstate_(0){  
         float Vertices[] = {
                 x_, y_,
                 x_ + 0.1f, y_,
@@ -46,11 +46,13 @@ public:
         glDeleteVertexArrays(1, &VAO_);
     }
 
-    void updateMenu(){
+    void updateMenu(int i){
+        currentstate_ = i;
+        //called to alter vertices depending on currentstate_
     }
 
-    void renderMenu(int p){
-        if (p == 0){
+    void renderMenu(){
+        if (currentstate_ = 0){ //means we on start menu
         glBindVertexArray(VAO_);
         glColor3f(1.0f,1.0f,1.0f);
         for(int i = 0; i < 3; ++i){
@@ -63,7 +65,7 @@ public:
 private:
 GLuint VAO_, VBO_;
 float x_,y_;
-int laststate;
+int currentstate_;
 };
 
 }

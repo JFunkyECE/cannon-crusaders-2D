@@ -40,6 +40,7 @@ public:
                 exit(-1);
             }
         my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
+        Menu_ = new menu::Menu();
         ducks_.reserve(50); //reserve enough space for duck objects
         ducks_.clear();
         lastshot_time = 0.0f;
@@ -54,6 +55,7 @@ public:
 
     ~Game() {
        delete my_tank;
+       delete Menu_;
        glfwDestroyWindow(window_);
        glfwTerminate();
     }
@@ -63,6 +65,7 @@ public:
         // Reset the tank
         delete my_tank;
         my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
+        Menu_->updateMenu(0);
         // Reset other game variables
         ducks_.clear();
         lastshot_time = 0.0f;
@@ -171,6 +174,7 @@ public:
         switch (current_state) {
             case GameState::Start:
                 //Menu_.renderMenu(0);
+                Menu_->renderMenu();
                 break;
             case GameState::Playing:
                my_tank->render();
@@ -242,6 +246,7 @@ private:
 GameState current_state;
 GLFWwindow* window_;
 tank::Tank* my_tank;
+menu::Menu* Menu_;
 float lastshot_time;
 float lastspawn_time; //makes sure enemies spawn in reasonable time of one another
 float spawn_interval; // to make sure enemies dont spawn in too quick succession
@@ -250,7 +255,6 @@ int enemies_defeated; //for completion of game purpose
 int enemies_on_screen;
 bool game_over;
 bool outcome;
-//menu::Menu Menu_;
 };
 
 
