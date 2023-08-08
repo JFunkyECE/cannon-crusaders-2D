@@ -163,26 +163,30 @@ public:
         }
     }
     void Render(){
+        //create menu object here
         switch (current_state) {
             case GameState::Start:
                glClear(GL_COLOR_BUFFER_BIT);
                glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
+               //where we will call render function;
                 break;
             case GameState::Playing:
                glClear(GL_COLOR_BUFFER_BIT);
                glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
-            
                my_tank->render();
                my_tank->renderCannonballs();
                renderEnemies();
+               //where we will call render function
                 break;
             case GameState::Paused:
                glClear(GL_COLOR_BUFFER_BIT);
                glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
+                //where we will call render function
                 break;
             case GameState::Gameover:
                glClear(GL_COLOR_BUFFER_BIT);
                glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
+               //where we will call render function
                 break;
         }
         
