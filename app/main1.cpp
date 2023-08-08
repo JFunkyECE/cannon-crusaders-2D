@@ -103,6 +103,7 @@ int main() {
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
+        glColor3f(1.0f, 1.0f, 1.0f);  // Set color to white
         renderText("Jacob is Cool", 350, 300, 1.0f);
         
         glfwSwapBuffers(window);
