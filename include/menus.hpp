@@ -12,7 +12,7 @@ public:
 //purpose of this class is to contain graphic rendering for
 //start menu, pause menu, and end screen 
 
-    Menu(): x_(-1.0f), y_(1.0f){  
+    Menu(): x_(-1.0f), y_(1.0f), laststate(0){  
         float Vertices[] = {
                 x_, y_,
                 x_ + 0.1f, y_,
@@ -46,26 +46,28 @@ public:
         glDeleteVertexArrays(1, &VAO_);
     }
 
-    void updateMenu(Game::GameState& current){
+    void updateMenu(){
         //this is where depending on the currentstate we will alter vertices
-        if(last_state == current){
-            return;
-        }else{
-            //add other changes to vertices here
-        }
+        // if(last_state == current){
+        //     return;
+        // }else{
+        //     //add other changes to vertices here
+        // }
 
 
-        //update laststate to currentstate 
-        last_state = current;
+        // //update laststate to currentstate 
+        // last_state = current;
     }
 
 
 //start menu
-    void renderMenu(Game::GameState& gamestate){
+    void renderMenu(int p){
+        if (p == 0){
         glBindVertexArray(VAO_);
         glColor3f(1.0f,1.0f,1.0f);
         for(int i = 0; i < 3; ++i){
         glDrawArrays(GL_QUADS,i*4,4);
+        }
         }
     }
 //contains the following text
@@ -106,7 +108,7 @@ public:
 private:
 GLuint VAO_, VBO_;
 float x_,y_;
- last_state;
+int laststate;
 };
 
 }
