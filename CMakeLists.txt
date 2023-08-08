@@ -11,6 +11,7 @@ set(OpenGL_GL_PREFERENCE "GLVND")
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(glfw3 3.2.1 REQUIRED)
+find_package(Freetype REQUIRED)
 
 # include directories
 include_directories(${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS})
