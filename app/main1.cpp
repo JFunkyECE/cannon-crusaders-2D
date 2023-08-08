@@ -3,6 +3,7 @@
 #include <ft2build.h>
 #include <iostream>
 #include <map>
+
 #include FT_FREETYPE_H
 
 std::map<GLchar, GLuint> CharacterTextures;
@@ -67,7 +68,7 @@ int main() {
         return -1;
     }
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Michael", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(800, 600, "Jacob", NULL, NULL);
     if (!window) {
         std::cerr << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -89,7 +90,7 @@ int main() {
     }
 
     FT_Face face;
-    if (FT_New_Face(ft, "path_to_font.ttf", 0, &face)) {
+    if (FT_New_Face(ft, "./font/arial_bold.ttf", 0, &face)) {
         std::cerr << "Failed to load font" << std::endl;
         return -1;
     }
@@ -102,7 +103,7 @@ int main() {
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
-        renderText("Michael", 350, 300, 1.0f);
+        renderText("Jacob is Cool", 350, 300, 1.0f);
         
         glfwSwapBuffers(window);
         glfwPollEvents();
