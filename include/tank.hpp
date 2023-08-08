@@ -138,9 +138,10 @@ public:
             cannonballs_.clear();
         }
         if(live_cannonballs() < cannonballs_onscreen && cannonballs_fired < 200){
+                
                 cannonballs_.emplace_back(x1,y1);
                 ++cannonballs_fired;
-                //std::cout<< "Cannonball #"<<cannonballs_fired<<" fired" << std::endl;
+                std::cout<< "Cannonball #"<<cannonballs_fired<<" fired" << std::endl;
         } else if (cannonballs_fired >= 200){
             //add something here to end the current game.
         }

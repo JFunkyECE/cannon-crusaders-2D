@@ -141,7 +141,7 @@ public:
                 my_tank->updateCannonballs();
                 updateEnemies();
                 detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
-                if(enemies_defeated == 20){
+                if(enemies_defeated == 50){
                     outcome = true;
                     game_over = true;
                 }
