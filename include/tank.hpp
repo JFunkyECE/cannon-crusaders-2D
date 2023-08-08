@@ -134,17 +134,16 @@ public:
     void shoot(){
         int cannonballs_onscreen = 40;
         //std::cout<< "Live Cannonballs on screen #"<<live_cannonballs() << std::endl;
-        if(cannonballs_.size() == 200){
-            cannonballs_.clear();
-        }
+
         if(live_cannonballs() < cannonballs_onscreen && cannonballs_fired < 200){
                 
                 cannonballs_.emplace_back(x1,y1);
                 ++cannonballs_fired;
                 std::cout<< "Cannonball #"<<cannonballs_fired<<" fired" << std::endl;
         } else if (cannonballs_fired >= 200){
-            //add something here to end the current game.
-        }
+            cannonballs_.clear();  
+            cannonballs_.reserve(200);      
+            }
     }
     void updateCannonballs(){
         for (auto it = cannonballs_.begin(); it != cannonballs_.end(); ++it) {
