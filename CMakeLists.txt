@@ -11,19 +11,15 @@ set(OpenGL_GL_PREFERENCE "GLVND")
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(glfw3 3.2.1 REQUIRED)
-find_package(Freetype REQUIRED)
 
 # include directories
 include_directories(${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS})
 include_directories(cannon-crusaders PUBLIC include/)
-include_directories(freetype PUBLIC include/)
 
 # add executable
 add_executable(cannon-crusaders app/main.cpp)
-add_executable(freetype app/main1.cpp)
 # link libraries
 target_link_libraries(cannon-crusaders ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw ${FREETYPE_LIBRARIES})
-target_link_libraries(freetype ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw ${FREETYPE_LIBRARIES})
 
 #enable ASan if ENABLE_ASAN set to 1 by user
 if(${ENABLE_ASAN})
