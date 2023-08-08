@@ -169,6 +169,7 @@ public:
             case GameState::Start:
                glClear(GL_COLOR_BUFFER_BIT);
                glClearColor(0.0f, 0.5f, 0.0f, 1.0f); // Set clear color to green
+               textrender.renderStartMenu();
                //where we will call render function;
                 break;
             case GameState::Playing:
