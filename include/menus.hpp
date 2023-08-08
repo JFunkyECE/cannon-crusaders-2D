@@ -46,7 +46,7 @@ public:
         glDeleteVertexArrays(1, &VAO_);
     }
 
-    void updateMenu(Game::GameState current){
+    void updateMenu(Game::GameState& current){
         //this is where depending on the currentstate we will alter vertices
         if(last_state == current){
             return;
@@ -61,7 +61,7 @@ public:
 
 
 //start menu
-    void renderMenu(Game::GameState gamestate){
+    void renderMenu(Game::GameState& gamestate){
         glBindVertexArray(VAO_);
         glColor3f(1.0f,1.0f,1.0f);
         for(int i = 0; i < 3; ++i){
@@ -106,7 +106,7 @@ public:
 private:
 GLuint VAO_, VBO_;
 float x_,y_;
-Game::GameState last_state;
+ last_state;
 };
 
 }
