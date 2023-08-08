@@ -19,8 +19,8 @@ public:
     }
 
     ~Menu(){
-        glDeleteVertexArrays(1, &VAO_);
         glDeleteBuffers(1, &VBO_);
+        glDeleteVertexArrays(1, &VAO_);
     }
 
 //start menu
