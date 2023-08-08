@@ -126,7 +126,7 @@ public:
     void Update(){
         collisions::CollisionDetection detector;
         ProcessInput();
-        Menu_.updateMenu();
+        //Menu_.updateMenu();
         switch (current_state) {
             
             case GameState::Start:
@@ -170,19 +170,19 @@ public:
         //create menu object here
         switch (current_state) {
             case GameState::Start:
-                Menu_.renderMenu(0);
+                //Menu_.renderMenu(0);
                 break;
             case GameState::Playing:
                my_tank->render();
                my_tank->renderCannonballs();
                renderEnemies();
-               Menu_.renderMenu(1);
+               //Menu_.renderMenu(1);
                 break;
             case GameState::Paused:
-                Menu_.renderMenu(2);
+                //Menu_.renderMenu(2);
                 break;
             case GameState::Gameover:
-                Menu_.renderMenu(3);
+                //Menu_.renderMenu(3);
                 break;
         }
         
@@ -250,7 +250,7 @@ int enemies_defeated; //for completion of game purpose
 int enemies_on_screen;
 bool game_over;
 bool outcome;
-menu::Menu Menu_;
+//menu::Menu Menu_;
 };
 
 

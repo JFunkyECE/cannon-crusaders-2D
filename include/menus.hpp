@@ -47,20 +47,8 @@ public:
     }
 
     void updateMenu(){
-        //this is where depending on the currentstate we will alter vertices
-        // if(last_state == current){
-        //     return;
-        // }else{
-        //     //add other changes to vertices here
-        // }
-
-
-        // //update laststate to currentstate 
-        // last_state = current;
     }
 
-
-//start menu
     void renderMenu(int p){
         if (p == 0){
         glBindVertexArray(VAO_);
@@ -70,40 +58,7 @@ public:
         }
         }
     }
-//contains the following text
-//      Cannon Crusaders
-//
-//      Start: Press ENTER
-//      Quit: Press Q
-//      Controls
-//      -> move right
-//      <- move left
-//      SPACE shoot
 
-    void renderStart();
-//ingame
-    void renderInGame();
-//enemies left counter thats it
-
-//Pause menu
-    void renderPause();
-//Small square goes over screen with following text
-//Paused
-//Press ENTER to continue
-//Press R to Restart
-//Press M to go back to the menu
-//Press Q to quit application
-
-
-//ENDGAME
-    void renderEndGame();
-//depending on win or lose
-//Great Job or Almost there
-//press R to restart
-//press M to go back to menu
-//press Q to quit application
-
-//render text function 
 
 private:
 GLuint VAO_, VBO_;
