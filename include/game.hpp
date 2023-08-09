@@ -200,7 +200,8 @@ public:
 
     void spawnEnemy(){
         if(enemies_defeated % 50 == 0 && enemies_defeated != 0){
-            ducks_.clear();
+            if(enemies_on_screen == 0){
+            ducks_.clear();}
         }else if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
             enemies_on_screen++;
