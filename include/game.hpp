@@ -8,6 +8,10 @@
 #include <vector>
 #include "menus.hpp"
 
+namespace menu {
+    class Menu;
+}
+
 class Game{
 
 public:

@@ -130,7 +130,7 @@ namespace menu{
         glDeleteVertexArrays(1, &VAO_);
     }
 
-    void Menu::updateMenu(int i, int score_ = 0){
+    void Menu::updateMenu(int i, int score_){
         if(i != currentstate_ || score_ != score){
             //update to whatever new state is
             vertices_.clear();
