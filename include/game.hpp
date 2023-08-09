@@ -147,11 +147,7 @@ public:
                 detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
                 if(game_over == true || detector.Hit_Tank(ducks_, my_tank)){
                     current_state = GameState::Gameover;
-                    if(outcome == false){
-                        std::cout << "loser" << std::endl;
-                    }else{
-                        std::cout << "winner" << std::endl;                        
-                    }
+                    std::cout << "Game over";
                 }
                 break;
             case GameState::Paused:
@@ -223,13 +219,12 @@ public:
                 // Check if the duck has gone off the bottom of the screen
                 if (it->getY() < -1.0f) {
                     game_over = true;
-                    outcome = false;
                 }
             } 
         }
     }
     void renderEnemies(){
-        for(int i = enemies_defeated; i < ducks_.size(); ++i) {
+        for(int i = 0; i < ducks_.size(); ++i) {
             if(ducks_[i].isActive()){
                 ducks_[i].render();
             }
@@ -258,7 +253,6 @@ std::vector<Ducks::Enemy> ducks_; //stores cannonball data
 int enemies_defeated; //for completion of game purpose
 int enemies_on_screen;
 bool game_over;
-bool outcome;
 };
 
 
