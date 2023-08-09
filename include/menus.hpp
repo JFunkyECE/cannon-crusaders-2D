@@ -323,11 +323,11 @@ public:
                 AddCharToVec('E', x_ + .11f,y_ -0.4f);
                 AddCharToVec('S', x_ + .22f,y_ -0.4f);
                 AddCharToVec('T', x_ + .33f,y_ -0.4f);
-                AddCharToVec('A', x_ + .55f,y_ -0.4f);
-                AddCharToVec('R', x_ + .66f,y_ -0.4f);
-                AddCharToVec('T', x_ + .77f,y_ -0.4f);
-                AddCharToVec('-', x_ + .88f,y_ -0.4f);
-                AddCharToVec('R', x_ + .99f,y_ -0.4f);
+                AddCharToVec('A', x_ + .44f,y_ -0.4f);
+                AddCharToVec('R', x_ + .55f,y_ -0.4f);
+                AddCharToVec('T', x_ + .66f,y_ -0.4f);
+                AddCharToVec('-', x_ + .77f,y_ -0.4f);
+                AddCharToVec('R', x_ + .88f,y_ -0.4f);
                 //main menu
                 AddCharToVec('M', x_,y_ -.6f);
                 AddCharToVec('A', x_ + .11f,y_ -.6f);
@@ -336,9 +336,9 @@ public:
                 AddCharToVec('M', x_ + .44f,y_ - .6f);
                 AddCharToVec('E', x_ + .55f,y_ - .6f);
                 AddCharToVec('N', x_ + .66f,y_- .6f);
-                AddCharToVec('U', x_ + .77f,y_ - .4f);
-                AddCharToVec('-', x_ + .88f,y_ - .4f);
-                AddCharToVec('M', x_ + .99f,y_ - .4f);
+                AddCharToVec('U', x_ + .77f,y_ - .6f);
+                AddCharToVec('-', x_ + .88f,y_ - .6f);
+                AddCharToVec('M', x_ + .99f,y_ - .6f);
                 //game over
             }
             glBindVertexArray(VAO_);
