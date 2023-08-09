@@ -89,10 +89,10 @@ public:
 
             case GameState::Playing:
                 if (glfwGetKey(window_, GLFW_KEY_LEFT) == GLFW_PRESS) {
-                    my_tank->move(-0.025f);  // Move the tank to the left
+                    my_tank->move(-0.050f);  // Move the tank to the left
                 }
                 if (glfwGetKey(window_, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-                    my_tank->move(0.025f);  // Move the tank to the right
+                    my_tank->move(0.050f);  // Move the tank to the right
                 }
                 if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
                     float current_time = glfwGetTime(); //gives time in seconds
