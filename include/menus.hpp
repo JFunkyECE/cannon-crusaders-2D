@@ -53,15 +53,14 @@ public:
 
     void renderMenu(){
         std::cout<<"we here now and currentstate_ is " << currentstate_ << std::endl;
-        if (currentstate_ = 0){ //means we on start menu
-        std::cout << "Rendering Menu" << std::endl;
+        
         glBindVertexArray(VAO_);
-        glBindBuffer(GL_ARRAY_BUFFER, VAO_);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_);
         glColor3f(1.0f,1.0f,1.0f);
         for(int i = 0; i < 3; ++i){
         glDrawArrays(GL_QUADS,i*4,4);
         }
-        }
+        
     }
 
 
