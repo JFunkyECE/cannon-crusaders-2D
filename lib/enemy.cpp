@@ -112,6 +112,6 @@ namespace Ducks{
     float Enemy::getX() const{ return x_;}
     float Enemy::getY() const{ return y_;}
     bool Enemy::isActive() const{return is_active;}
-    void Enemy::ssetActive(bool setting){is_active = setting;}
+    void Enemy::setActive(bool setting){is_active = setting;}
 
 }
