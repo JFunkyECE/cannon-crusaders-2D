@@ -128,7 +128,7 @@ public:
                 vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.0375f); //middle of H
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle of H
                 break;
             case 'I':
                 vertices_.push_back(x); vertices_.push_back(y);
