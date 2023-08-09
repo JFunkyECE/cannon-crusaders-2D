@@ -310,7 +310,7 @@ public:
                 AddCharToVec('E', x_ + .77f, y_);
                 AddCharToVec('R', x_ + .88f, y_);
                 //score
-                AAddCharToVec('S', x_, y_-0.2f);
+                AddCharToVec('S', x_, y_-0.2f);
                 AddCharToVec('C', x_ + .11f, y_-0.2f);
                 AddCharToVec('O', x_ + .22f, y_-0.2f);
                 AddCharToVec('R', x_ + .33f, y_-0.2f);
