@@ -17,6 +17,7 @@ public:
         vertices_.reserve(1000); //will never reach end
 
         AddToVec('C', x_, y_);
+        AddToVec('C', x_ + .11f, y_);
 
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
@@ -36,8 +37,8 @@ public:
 
     void updateMenu(int i, int enemies_defeated = 0){
         currentstate_ = i;
-        //called to alter vertices depending on currentstate_
 
+        //this will, depending on i, clear the vector 
         
     }
 
