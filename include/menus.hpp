@@ -17,7 +17,7 @@ public:
         vertices_.reserve(1000); //will never reach end
 
         AddToVec('C', x_, y_);
-        AddToVec('C', x_ + .11f, y_);
+        AddToVec('A', x_ + .11f, y_);
 
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
@@ -37,6 +37,7 @@ public:
 
     void updateMenu(int i, int enemies_defeated = 0){
         currentstate_ = i;
+        //make check so if nothing changes state wise can just go straight to render without reallocating
 
         //this will, depending on i, clear the vector 
         
@@ -55,8 +56,28 @@ public:
     //adds char to vector
     void AddToVec(char letter, float x, float y){
         switch(letter){
-            case 'C':
+            case 'A':
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
 
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of A
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle of A
+                break;
+            case 'C':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
