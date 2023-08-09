@@ -30,7 +30,10 @@ public:
         AddCharToVec('Y', x_ + 1.21f, y_);
         AddCharToVec('E', x_ + 1.32f, y_);
         AddCharToVec('S', x_ + 1.43f, y_);
-
+        AddCharToVec('D', x_ + 1.54f, y_);
+        AddCharToVec('G', x_ + 1.65f, y_);
+        AddCharToVec('R', x_ + 1.76f, y_);
+        AddCharToVec('M', x_ + 1.87f, y_);
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
 
@@ -109,6 +112,25 @@ public:
                 break;
 
             case 'D': //not done
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f); //top
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
                 break;
             case 'E': //not done
                 vertices_.push_back(x); vertices_.push_back(y);
@@ -126,16 +148,36 @@ public:
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
                 vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
 
-                vertices_.push_back(x); vertices_.push_back(y - 0.05f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle
                 break;
             case 'G': //not done
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of G
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
+
+                vertices_.push_back(x + 0.05f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x + 0.05f); vertices_.push_back(y - 0.0625f); //middle
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of A
                 break;
             case 'H':
                 vertices_.push_back(x); vertices_.push_back(y);
@@ -181,6 +223,25 @@ public:
                 vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
                 break;
             case 'M': //not done
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of H
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.0625f); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.0375f); vertices_.push_back(y - 0.05f); //left side diag
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.0375f); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.0625f); vertices_.push_back(y - 0.05f); //right side diag
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of H
                 break;
             case 'N':
                 vertices_.push_back(x); vertices_.push_back(y);
@@ -262,6 +323,30 @@ public:
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f); //right side
                 break;
             case 'R': //not done
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f); //right side
+
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle
                 break;
             case 'S': //not done
                 vertices_.push_back(x); vertices_.push_back(y);
