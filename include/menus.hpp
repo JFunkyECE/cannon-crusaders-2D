@@ -345,11 +345,7 @@ public:
             glBindBuffer(GL_ARRAY_BUFFER, VBO_);
             glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * vertices_.size(), vertices_.data());
 
-        }
-        //make check so if nothing changes state wise can just go straight to render without reallocating
-
-        //this will, depending on i, clear the vector 
-        
+        }    
     }
 
     void renderMenu(){

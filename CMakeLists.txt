@@ -13,13 +13,13 @@ find_package(GLEW REQUIRED)
 find_package(glfw3 3.2.1 REQUIRED)
 
 # include directories
-include_directories(${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS})
+include_directories(${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} )
 include_directories(cannon-crusaders PUBLIC include/)
 
 # add executable
-add_executable(cannon-crusaders app/main.cpp)
+add_executable(cannon-crusaders app/main.cpp )
 # link libraries
-target_link_libraries(cannon-crusaders ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw ${FREETYPE_LIBRARIES})
+target_link_libraries(cannon-crusaders ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw )
 
 #enable ASan if ENABLE_ASAN set to 1 by user
 if(${ENABLE_ASAN})
