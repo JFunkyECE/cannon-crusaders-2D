@@ -5,6 +5,7 @@
 #include "game.hpp"
 #include <iostream>
 #include <vector>
+#include <string>
 
 namespace menu{
 
@@ -257,13 +258,14 @@ public:
                 AddCharToVec('M', x_ + 1.1f, y_ - 1.3f);
                 AddCharToVec('E', x_ + 1.21f, y_ - 1.3f);
             }else if(currentstate_ == 1){
+                score = score_;
                 AddCharToVec('S', x_, y_);
                 AddCharToVec('C', x_ + .11f, y_);
                 AddCharToVec('O', x_ + .22f, y_);
                 AddCharToVec('R', x_ + .33f, y_);
                 AddCharToVec('E', x_ + .44f, y_);
                 AddCharToVec('-', x_ + .55f, y_);
-                
+                AddIntToVec(score, x_ + 0.66f, y_);
                 //in game
             }else if(currentstate_ == 2){
                 
@@ -306,7 +308,217 @@ public:
         }
     }   
     //implement after
-    void AddIntToVec(int number, float x, float y){}
+    void AddIntToVec(int number, float x, float y){
+
+        std::string numStr = std::to_string(number);
+        for (char c : numStr) {
+            switch(c){
+                //do the same thing as before  
+                case '0':
+                    vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f); //top
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                    break;
+                case '1':
+                vertices_.push_back(x + 0.0375f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.0675f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.0675f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.0375f); vertices_.push_back(y - 0.1f); //middle
+                    break;
+                case '2':
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f); //top
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y );
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y ); //right side
+                    break;
+                case '3':
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle
+                    break;
+                case '4':
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);//right
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //left side of A
+
+                    break;
+                case '5':
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f); //top
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //left
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                    break;
+                case '6':
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                    break;
+                case '7':
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of A
+                    break;
+                case '8':
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of A
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle
+                    break;
+                case '9':
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //left side
+
+                vertices_.push_back(x); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top
+
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+
+                vertices_.push_back(x); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle
+                    break;
+            }
+        x+= 0.11f; //so numbers dont overlap
+        }
+    }
     //adds char to vector
     void AddCharToVec(char letter, float x, float y){
         switch(letter){
