@@ -199,7 +199,7 @@ public:
 
 
     void spawnEnemy(){
-        if(enemies_defeated % 50 == 0){
+        if(enemies_defeated % 50 == 0 && enemies_defeated != 0){
             ducks_.clear();
         }else if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
