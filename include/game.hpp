@@ -96,7 +96,7 @@ public:
                 }
                 if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
                     float current_time = glfwGetTime(); //gives time in seconds
-                    if(current_time - lastshot_time >= 0.05f){ //limit shooting to one per 0.2 seconds or 5 shots per second
+                    if(current_time - lastshot_time >= 0.15f){ //limit shooting to one per 0.2 seconds or 5 shots per second
                         my_tank->shoot();
                         lastshot_time = current_time;
                     }

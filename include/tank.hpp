@@ -132,7 +132,7 @@ public:
     }
     //adds a cannonball to the vector cannonballs_
     void shoot(){
-        int cannonballs_onscreen = 40;
+        int cannonballs_onscreen = 5;
         //std::cout<< "Live Cannonballs on screen #"<<live_cannonballs() << std::endl;
 
         if(live_cannonballs() < cannonballs_onscreen && cannonballs_fired < 200){
@@ -148,7 +148,7 @@ public:
     void updateCannonballs(){
         for (auto it = cannonballs_.begin(); it != cannonballs_.end(); ++it) {
             if (it->exists()) {
-                it->move(0.01f);
+                it->move(0.05f);
                 // Check if the cannonball has gone off the top of the screen
                 if (it->getY() > 1.0f) {
                     it->setExists(false);
