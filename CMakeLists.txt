@@ -35,5 +35,7 @@ if(${ENABLE_UBSAN})
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=undefined")
 endif ()
 
+# Install the cannon-crusaders executable
 install(TARGETS cannon-crusaders DESTINATION bin)
-install(PROGRAMS ${CMAKE_SOURCE_DIR}/demo DESTINATION bin)
+# Install the demo script.
+install(PROGRAMS demo DESTINATION bin)
