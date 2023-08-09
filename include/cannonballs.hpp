@@ -16,7 +16,7 @@ public:
     bool exists() const;
     void setExists(bool exists);
     float getX() const;
-    float getY() const;s
+    float getY() const;
 private:
 float x_,y_; //stores key data related to position of ball
 bool exists_; //stores whether bullet has made contact with enemy or is out of window
