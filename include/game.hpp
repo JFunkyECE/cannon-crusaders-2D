@@ -49,7 +49,6 @@ public:
         spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
         enemies_defeated = 0; //records # of shots fired
         enemies_on_screen = 0;
-        game_over = false;
     }
 
 
@@ -74,7 +73,6 @@ public:
         spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
         enemies_defeated = 0; //records # of shots fired
         enemies_on_screen = 0;
-        game_over = false;
     }
 
     //processes keyboard inputs depending on what state the game is in
@@ -145,9 +143,8 @@ public:
                 my_tank->updateCannonballs();
                 updateEnemies();
                 detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
-                if(game_over == true || detector.Hit_Tank(ducks_, my_tank)){
+                if(detector.Hit_Tank(ducks_, my_tank)){
                     current_state = GameState::Gameover;
-                    std::cout << "Game over";
                 }
                 break;
             case GameState::Paused:
@@ -235,13 +232,12 @@ public:
         }}
     void updateEnemies(){
         //movement algorithm for enemy objects
-        //start with just moving straight down
         for (auto it = (ducks_.begin()); it != ducks_.end(); ++it) {
             if (it->isActive()) {
                 it->move(-0.015f);
                 // Check if the duck has gone off the bottom of the screen
                 if (it->getY() < -1.0f) {
-                    game_over = true;
+                    current_state = GameState::Gameover;
                 }
             } 
         }
@@ -275,7 +271,6 @@ float spawn_interval; // to make sure enemies dont spawn in too quick succession
 std::vector<Ducks::Enemy> ducks_; //stores cannonball data
 int enemies_defeated; //for completion of game purpose
 int enemies_on_screen;
-bool game_over;
 };
 
 
