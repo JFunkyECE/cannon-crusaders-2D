@@ -126,7 +126,7 @@ public:
         AddCharToVec('E', x_ + 1.21f, y_ - 1.3f);
         
         
-        }
+        
 
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
