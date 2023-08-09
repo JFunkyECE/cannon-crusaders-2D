@@ -247,7 +247,7 @@ public:
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
                 vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle
                 break;
-            case 'F'
+            case 'F':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
