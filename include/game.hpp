@@ -174,6 +174,7 @@ public:
         switch (current_state) {
             case GameState::Start:
                 //Menu_.renderMenu(0);
+                std::cout <<"Got here" << std::endl;
                 Menu_->renderMenu();
                 break;
             case GameState::Playing:
