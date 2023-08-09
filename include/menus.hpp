@@ -148,14 +148,145 @@ public:
             currentstate_ = i;
             if(currentstate_ == 0){
                 //start menu
+                AddCharToVec('C', x_, y_);
+                AddCharToVec('A', x_ + .11f, y_);
+                AddCharToVec('N', x_ + .22f, y_);
+                AddCharToVec('N', x_ + .33f, y_);
+                AddCharToVec('O', x_ + .44f, y_);
+                AddCharToVec('N', x_ + .55f, y_);
+                AddCharToVec('C', x_ + .77f, y_);
+                AddCharToVec('R', x_ + .88f, y_);
+                AddCharToVec('U', x_ + .99f, y_);
+                AddCharToVec('S', x_ + 1.1f, y_);
+                AddCharToVec('A', x_ + 1.21f, y_);
+                AddCharToVec('D', x_ + 1.32f, y_);
+                AddCharToVec('E', x_ + 1.43f, y_);
+                AddCharToVec('R', x_ + 1.54f, y_);
+                AddCharToVec('S', x_ + 1.65f, y_);
+                
+                AddCharToVec('S', x_ , y_ - 0.3f);
+                AddCharToVec('T', x_ + .11f, y_ - 0.3f);
+                AddCharToVec('A', x_ + .22f, y_ - 0.3f);
+                AddCharToVec('R', x_ + .33f, y_ - 0.3f);
+                AddCharToVec('T', x_ + .44f, y_ - 0.3f);
+                AddCharToVec('-', x_ + .55f, y_ - 0.3f);
+                AddCharToVec('P', x_ + .66f, y_ - 0.3f);
+                AddCharToVec('R', x_ + .77f, y_ - 0.3f);
+                AddCharToVec('E', x_ + .88f, y_ - 0.3f);
+                AddCharToVec('S', x_ + .99f, y_ - 0.3f);
+                AddCharToVec('S', x_ + 1.1f, y_ - 0.3f);
+                AddCharToVec('E', x_ + 1.32f, y_ - 0.3f);
+                AddCharToVec('N', x_ + 1.43f, y_ - 0.3f);
+                AddCharToVec('T', x_ + 1.54f, y_ - 0.3f);
+                AddCharToVec('E', x_ + 1.65f, y_ - 0.3f);
+                AddCharToVec('R', x_ + 1.76f, y_ - 0.3f);
+
+                AddCharToVec('Q', x_ , y_ - 0.45f);
+                AddCharToVec('U', x_ + .11f, y_ - 0.45f);
+                AddCharToVec('I', x_ + .22f, y_ - 0.45f);
+                AddCharToVec('T', x_ + .33f, y_ - 0.45f);
+                AddCharToVec('-', x_ + .44f, y_ - 0.45f);
+                AddCharToVec('E', x_ + .55f, y_ - 0.45f);
+                AddCharToVec('S', x_ + .66f, y_ - 0.45f);
+                AddCharToVec('C', x_ + .77f, y_ - 0.45f);
+                
+
+                AddCharToVec('I', x_ , y_ - 0.7f);
+                AddCharToVec('N', x_ + .11f, y_ - 0.7f);
+                AddCharToVec('-', x_ + .22f, y_ - 0.7f);
+                AddCharToVec('G', x_ + .33f, y_ - 0.7f);
+                AddCharToVec('A', x_ + .44f, y_ - 0.7f);
+                AddCharToVec('M', x_ + .55f, y_ - 0.7f);
+                AddCharToVec('E', x_ + .66f, y_ - 0.7f);
+                AddCharToVec('C', x_ + .88f, y_ - 0.7f);
+                AddCharToVec('O', x_ + .99f, y_ - 0.7f);
+                AddCharToVec('N', x_ + 1.1f, y_ - 0.7f);
+                AddCharToVec('T', x_ + 1.21f, y_ - 0.7f);
+                AddCharToVec('R', x_ + 1.32f, y_ - 0.7f);
+                AddCharToVec('O', x_ + 1.43f, y_ - 0.7f);
+                AddCharToVec('L', x_ + 1.54f, y_ - 0.7f);
+                AddCharToVec('S', x_ + 1.65f, y_ - 0.7f);
+                
+                //left arrow - MOVE LEFT
+                AddCharToVec('<', x_ , y_ - 0.85f);
+                AddCharToVec('-', x_ + .05f, y_ - 0.85f);
+                AddCharToVec('M', x_ + .21f, y_ - 0.85f);
+                AddCharToVec('O', x_ + .32f, y_ - 0.85f);
+                AddCharToVec('V', x_ + .43f, y_ - 0.85f);
+                AddCharToVec('E', x_ + .54f, y_ - 0.85f);
+                AddCharToVec('L', x_ + .76f, y_ - 0.85f);
+                AddCharToVec('E', x_ + .87f, y_ - 0.85f);
+                AddCharToVec('F', x_ + .98f, y_ - 0.85f);
+                AddCharToVec('T', x_ + 1.09f, y_ - 0.85f);
+
+                //right arrow - MOVE RIGHT
+                AddCharToVec('-', x_ , y_ - 1.0f);
+                AddCharToVec('>', x_ + .05f, y_ - 1.0f);
+                AddCharToVec('M', x_ + .21f, y_ - 1.0f);
+                AddCharToVec('O', x_ + .32f, y_ - 1.0f);
+                AddCharToVec('V', x_ + .43f, y_ - 1.0f);
+                AddCharToVec('E', x_ + .54f, y_ - 1.0f);
+                AddCharToVec('R', x_ + .76f, y_ - 1.0f);
+                AddCharToVec('I', x_ + .87f, y_ - 1.0f);
+                AddCharToVec('G', x_ + .98f, y_ - 1.0f);
+                AddCharToVec('H', x_ + 1.09f, y_ - 1.0f);
+                AddCharToVec('T', x_ + 1.20f, y_ - 1.0f);
+
+                //SPACE - SHOOT
+                AddCharToVec('S', x_ , y_ - 1.15f);
+                AddCharToVec('P', x_ + .11f, y_ - 1.15f);
+                AddCharToVec('A', x_ + .22f, y_ - 1.15f);
+                AddCharToVec('C', x_ + .33f, y_ - 1.15f);
+                AddCharToVec('E', x_ + .44f, y_ - 1.15f);
+                AddCharToVec('-', x_ + .55f, y_ - 1.15f);
+                AddCharToVec('S', x_ + .66f, y_ - 1.15f);
+                AddCharToVec('H', x_ + .77f, y_ - 1.15f);
+                AddCharToVec('O', x_ + .88f, y_ - 1.15f);
+                AddCharToVec('O', x_ + .99f, y_ - 1.15f);
+                AddCharToVec('T', x_ + 1.1f, y_ - 1.15f);
+                //P - PAUSE
+                AddCharToVec('P', x_ , y_ - 1.3f);
+                AddCharToVec('-', x_ + .11f, y_ - 1.3f);
+                AddCharToVec('P', x_ + .22f, y_ - 1.3f);
+                AddCharToVec('A', x_ + .33f, y_ - 1.3f);
+                AddCharToVec('U', x_ + .44f, y_ - 1.3f);
+                AddCharToVec('S', x_ + .55f, y_ - 1.3f);
+                AddCharToVec('E', x_ + .66f, y_ - 1.3f);
+                AddCharToVec('G', x_ + .88f, y_ - 1.3f);
+                AddCharToVec('A', x_ + .99f, y_ - 1.3f);
+                AddCharToVec('M', x_ + 1.1f, y_ - 1.3f);
+                AddCharToVec('E', x_ + 1.21f, y_ - 1.3f);
             }else if(currentstate_ == 1){
                 score = score_;
+                AddCharToVec('S', x_, y_);
+                AddCharToVec('C', x_ + .11f, y_);
+                AddCharToVec('O', x_ + .22f, y_);
+                AddCharToVec('R', x_ + .33f, y_);
+                AddCharToVec('E', x_ + .44f, y_);
+                AddCharToVec('-', x_ + .55f, y_);
                 //in game
             }else if(currentstate_ == 2){
-                //pause screen
+                AddCharToVec('P', x_, y_);
+                AddCharToVec('A', x_ + .11f, y_);
+                AddCharToVec('U', x_ + .22f, y_);
+                AddCharToVec('S', x_ + .33f, y_);
+                AddCharToVec('E', x_ + .44f, y_);
+                AddCharToVec('D', x_ + .55f, y_);
             }else{
+                AddCharToVec('G', x_, y_);
+                AddCharToVec('A', x_ + .11f, y_);
+                AddCharToVec('M', x_ + .22f, y_);
+                AddCharToVec('E', x_ + .33f, y_);
+                AddCharToVec('O', x_ + .55f, y_);
+                AddCharToVec('V', x_ + .66f, y_);
+                AddCharToVec('E', x_ + .77f, y_);
+                AddCharToVec('R', x_ + .88f, y_);
                 //game over
             }
+            glBindVertexArray(VAO_);
+            glBindBuffer(GL_ARRAY_BUFFER, VBO_);
+            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * vertices_.size(), vertices_.data());
+
         }
         //make check so if nothing changes state wise can just go straight to render without reallocating
 
