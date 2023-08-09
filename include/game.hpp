@@ -84,7 +84,7 @@ public:
                     current_state = GameState::Playing;
                 }
                 if (glfwGetKey(window_, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-                    //quit
+                    //quits
                     glfwSetWindowShouldClose(window_, 1);
                 }
                 break;
