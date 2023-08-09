@@ -199,8 +199,8 @@ public:
 
 
     void spawnEnemy(){
-        if(ducks_.size() == 50){
-            std::cout <<"made it here";
+        if(enemies_defeated % 50 == 0){
+            ducks_.clear();
         }else if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
             enemies_on_screen++;
