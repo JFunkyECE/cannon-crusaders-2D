@@ -3,7 +3,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "game.hpp"
-
+#include <iostream>
 
 namespace menu{
 
@@ -53,6 +53,7 @@ public:
 
     void renderMenu(){
         if (currentstate_ = 0){ //means we on start menu
+        std::cout << "Rendering Menu" << std::endl;
         glBindVertexArray(VAO_);
         glColor3f(1.0f,1.0f,1.0f);
         for(int i = 0; i < 3; ++i){
