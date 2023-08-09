@@ -83,6 +83,10 @@ public:
                     Init(); //ensures data resets    
                     current_state = GameState::Playing;
                 }
+                if (glfwGetKey(window_, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+                    //quit
+                    glfwSetWindowShouldClose(window_, 1);
+                }
                 break;
 
             case GameState::Playing:
@@ -116,6 +120,9 @@ public:
             case GameState::Gameover:
                 if (glfwGetKey(window_, GLFW_KEY_R) == GLFW_PRESS) {
                     Restart();
+                }
+                if (glfwGetKey(window_, GLFW_KEY_M) == GLFW_PRESS) {
+                    current_state = GameState::Start; // Resume the game
                 }
                 break;
         }
