@@ -52,6 +52,7 @@ public:
     }
 
     void renderMenu(){
+        std::cout<<"we here now" <<std::endl;
         if (currentstate_ = 0){ //means we on start menu
         std::cout << "Rendering Menu" << std::endl;
         glBindVertexArray(VAO_);

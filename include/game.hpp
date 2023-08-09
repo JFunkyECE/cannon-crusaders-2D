@@ -39,7 +39,7 @@ public:
                 std::cout << "Failed to initialize GLEW" << std::endl;
                 exit(-1);
             }
-        my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
+        my_tank = new tank::Tank(); 
         Menu_ = new menu::Menu();
         ducks_.reserve(50); //reserve enough space for duck objects
         ducks_.clear();
@@ -173,8 +173,6 @@ public:
         //create menu object here
         switch (current_state) {
             case GameState::Start:
-                //Menu_.renderMenu(0);
-                std::cout <<"Got here" << std::endl;
                 Menu_->renderMenu();
                 break;
             case GameState::Playing:
