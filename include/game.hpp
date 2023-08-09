@@ -202,6 +202,7 @@ public:
         if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             if(ducks_.size() == 50 ){
                 if(enemies_on_screen == 0){
+                    std::cout<< "made it here";
                     ducks_.clear();
                 }
             }else{
