@@ -142,9 +142,9 @@ public:
     }
 
     void updateMenu(int i, int score_ = 0){
-        if(i != currentstate_){
-            vertices_.clear();
+        if(i != currentstate_ || score_ != score){
             //update to whatever new state is
+            vertices_.clear();
             currentstate_ = i;
             if(currentstate_ == 0){
                 //start menu
@@ -257,15 +257,16 @@ public:
                 AddCharToVec('M', x_ + 1.1f, y_ - 1.3f);
                 AddCharToVec('E', x_ + 1.21f, y_ - 1.3f);
             }else if(currentstate_ == 1){
-                score = score_;
                 AddCharToVec('S', x_, y_);
                 AddCharToVec('C', x_ + .11f, y_);
                 AddCharToVec('O', x_ + .22f, y_);
                 AddCharToVec('R', x_ + .33f, y_);
                 AddCharToVec('E', x_ + .44f, y_);
                 AddCharToVec('-', x_ + .55f, y_);
+                
                 //in game
             }else if(currentstate_ == 2){
+                
                 AddCharToVec('P', x_, y_);
                 AddCharToVec('A', x_ + .11f, y_);
                 AddCharToVec('U', x_ + .22f, y_);
