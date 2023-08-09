@@ -199,16 +199,11 @@ public:
 
 
     void spawnEnemy(){
-        if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
-            if(ducks_.size() == 50 ){
-                if(enemies_on_screen == 0){
-                    std::cout<< "made it here";
-                    ducks_.clear();
-                }
-            }else{
+        if(ducks_.size() == 50){
+            std::cout <<"made it here";
+        }else if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
             enemies_on_screen++;
-            }
             lastspawn_time = glfwGetTime();
         }}
     void updateEnemies(){
