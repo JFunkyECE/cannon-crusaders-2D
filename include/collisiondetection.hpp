@@ -12,7 +12,7 @@ class CollisionDetection{
 public:
 //first function checks whether bullets have made contact with ducks
 //three parameters: duck vector, tank object, and enemies defeated counter
-void Hit_Duck(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank, int& enemies_defeated, int enemies_on_screen){
+void Hit_Duck(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank, int& enemies_defeated, int& enemies_on_screen){
     //loop through bullets, checking if active before continuing
     for(Cannonballs& cannonball : my_tank->Cannonballpositions()){
         if(cannonball.exists()){
