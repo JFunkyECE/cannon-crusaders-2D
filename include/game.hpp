@@ -71,7 +71,7 @@ public:
         lastshot_time = 0.0f;
         current_state = GameState::Start; //change back to start page eventually 
         lastspawn_time = 0.0f; 
-        spawn_interval = 1.0f; // to make sure enemies dont spawn in too quick succession
+        spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
         enemies_defeated = 0; //records # of shots fired
         enemies_on_screen = 0;
         game_over = false;
@@ -208,6 +208,30 @@ public:
             ducks_.emplace_back();
             enemies_on_screen++;
             lastspawn_time = glfwGetTime();
+            if(enemies_defeated > 10 && enemies_defeated < 51){
+                if(enemies_defeated > 20){
+                    if(enemies_defeated > 30){
+                        if(enemies_defeated > 40){
+                            if(enemies_defeated > 50){
+                                    spawn_interval = 0.8f;
+                            }else{
+                                spawn_interval = 0.95f;
+
+                            }
+                        }else{
+                             spawn_interval = 1.0f;
+
+                        }
+                    }else{
+                        spawn_interval = 1.1f;
+                    }
+                }else{
+                    spawn_interval = 1.2f;
+
+                }
+            }else{
+                spawn_interval = 1.3f;
+            }
         }}
     void updateEnemies(){
         //movement algorithm for enemy objects
