@@ -41,7 +41,7 @@ public:
             }
         my_tank = new tank::Tank(); 
         Menu_ = new menu::Menu();
-        ducks_.reserve(50); //reserve enough space for duck objects
+        ducks_.reserve(500); //reserve enough space for duck objects
         ducks_.clear();
         lastshot_time = 0.0f;
         current_state = GameState::Start; //change back to start page eventually 
@@ -201,6 +201,7 @@ public:
     void spawnEnemy(){
         if(enemies_defeated % 50 == 0 && enemies_defeated != 0){
             if(enemies_on_screen == 0){
+            std::cout <<"do we get here";
             ducks_.clear();}
         }else if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
