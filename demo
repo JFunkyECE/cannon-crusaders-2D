@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Define the directory of the current script
+cmd_dir=$(dirname "$0")
+
+# Define the path to the program that needs to be executed
+ss_program="$cmd_dir/cannon-crusaders"
+
+# Ensure that our script will only access the installation directory
+if [[ ! "$ss_program" =~ ^"$cmd_dir".* ]]; then
+    echo "Error: Attempting to access outside of the installation directory!"
+    exit 1
+fi
+
+# Run the Cannon Crusaders program
+echo "Running Cannon Crusaders.."
+$ss_program
