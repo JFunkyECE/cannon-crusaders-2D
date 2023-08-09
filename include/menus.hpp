@@ -39,7 +39,7 @@ public:
                 x_ + 0.11f, y_, 
                 x_ + 0.135f, y_,
                 x_ + 0.135f, y_ - 0.1f,
-                x_ , y_ - 0.1f,         //left side of A
+                x_ + 0.11f, y_ - 0.1f,         //left side of A
 
                 x_ + 0.11f, y_ - 0.05f,
                 x_ + 0.21f, y_ - 0.05f,
