@@ -77,7 +77,7 @@ public:
         
         //left arrow - MOVE LEFT
         AddCharToVec('<', x_ , y_ - 0.85f);
-        AddCharToVec('-', x_ + .1f, y_ - 0.85f);
+        AddCharToVec('-', x_ + .05f, y_ - 0.85f);
         AddCharToVec('M', x_ + .21f, y_ - 0.85f);
         AddCharToVec('O', x_ + .32f, y_ - 0.85f);
         AddCharToVec('V', x_ + .43f, y_ - 0.85f);
@@ -89,7 +89,7 @@ public:
 
         //right arrow - MOVE RIGHT
         AddCharToVec('-', x_ , y_ - 1.0f);
-        AddCharToVec('>', x_ + .1f, y_ - 1.0f);
+        AddCharToVec('>', x_ + .05f, y_ - 1.0f);
         AddCharToVec('M', x_ + .21f, y_ - 1.0f);
         AddCharToVec('O', x_ + .32f, y_ - 1.0f);
         AddCharToVec('V', x_ + .43f, y_ - 1.0f);
@@ -119,7 +119,7 @@ public:
         AddCharToVec('A', x_ + .33f, y_ - 1.3f);
         AddCharToVec('U', x_ + .44f, y_ - 1.3f);
         AddCharToVec('S', x_ + .55f, y_ - 1.3f);
-        AddCharToVec('E', x_ + .77f, y_ - 1.3f);
+        AddCharToVec('E', x_ + .66f, y_ - 1.3f);
         AddCharToVec('G', x_ + .88f, y_ - 1.3f);
         AddCharToVec('A', x_ + .99f, y_ - 1.3f);
         AddCharToVec('M', x_ + 1.1f, y_ - 1.3f);
