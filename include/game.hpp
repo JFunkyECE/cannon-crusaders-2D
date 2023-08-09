@@ -108,7 +108,7 @@ public:
                 if (glfwGetKey(window_, GLFW_KEY_ENTER) == GLFW_PRESS) {
                     current_state = GameState::Playing; 
                 }
-                if (glfwGetKey(window_, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+                if (glfwGetKey(window_, GLFW_KEY_M) == GLFW_PRESS) {
                     current_state = GameState::Start; // Resume the game
                 }
                 break;

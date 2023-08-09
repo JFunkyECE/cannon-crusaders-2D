@@ -275,6 +275,31 @@ public:
                 AddCharToVec('S', x_ + .33f, y_);
                 AddCharToVec('E', x_ + .44f, y_);
                 AddCharToVec('D', x_ + .55f, y_);
+                //press enter to keep playing
+                AddCharToVec('R', x_, y_ - .2f);
+                AddCharToVec('E', x_ + .11f, y_- .2f);
+                AddCharToVec('S', x_ + .22f, y_- .2f);
+                AddCharToVec('U', x_ + .33f, y_- .2f);
+                AddCharToVec('M', x_ + .44f, y_- .2f);
+                AddCharToVec('E', x_ + .55f, y_- .2f);
+                AddCharToVec('-', x_ + .66f, y_- .2f);
+                AddCharToVec('E', x_ + .77f, y_- .2f);
+                AddCharToVec('N', x_ + .88f, y_- .2f);
+                AddCharToVec('T', x_ + .99f, y_- .2f);
+                AddCharToVec('E', x_ + 1.1f, y_- .2f);
+                AddCharToVec('R', x_ + 1.21f, y_- .2f);
+                //press M to go to menu
+                AddCharToVec('M', x_, y_- .4f);
+                AddCharToVec('A', x_ + .11f, y_- .4f);
+                AddCharToVec('I', x_ + .22f, y_- .4f);
+                AddCharToVec('N', x_ + .33f, y_- .4f);
+                AddCharToVec('M', x_ + .44f, y_- .4f);
+                AddCharToVec('E', x_ + .55f, y_- .4f);
+                AddCharToVec('N', x_ + .66f, y_- .4f);
+                AddCharToVec('U', x_ + .77f, y_- .4f);
+                AddCharToVec('-', x_ + .88f, y_- .4f);
+                AddCharToVec('M', x_ + .99f, y_- .4f);
+                
             }else{
                 AddCharToVec('G', x_, y_);
                 AddCharToVec('A', x_ + .11f, y_);
@@ -284,6 +309,36 @@ public:
                 AddCharToVec('V', x_ + .66f, y_);
                 AddCharToVec('E', x_ + .77f, y_);
                 AddCharToVec('R', x_ + .88f, y_);
+                //score
+                AAddCharToVec('S', x_, y_-0.2f);
+                AddCharToVec('C', x_ + .11f, y_-0.2f);
+                AddCharToVec('O', x_ + .22f, y_-0.2f);
+                AddCharToVec('R', x_ + .33f, y_-0.2f);
+                AddCharToVec('E', x_ + .44f, y_-0.2f);
+                AddCharToVec('-', x_ + .55f, y_-0.2f);
+                AddIntToVec(score, x_ + .66f, y_-0.2f);
+
+                //restart
+                AddCharToVec('R', x_, y_-0.4f);
+                AddCharToVec('E', x_ + .11f,y_ -0.4f);
+                AddCharToVec('S', x_ + .22f,y_ -0.4f);
+                AddCharToVec('T', x_ + .33f,y_ -0.4f);
+                AddCharToVec('A', x_ + .55f,y_ -0.4f);
+                AddCharToVec('R', x_ + .66f,y_ -0.4f);
+                AddCharToVec('T', x_ + .77f,y_ -0.4f);
+                AddCharToVec('-', x_ + .88f,y_ -0.4f);
+                AddCharToVec('R', x_ + .99f,y_ -0.4f);
+                //main menu
+                AddCharToVec('M', x_,y_ -.6f);
+                AddCharToVec('A', x_ + .11f,y_ -.6f);
+                AddCharToVec('I', x_ + .22f,y_ - .6f);
+                AddCharToVec('N', x_ + .33f,y_ - .6f);
+                AddCharToVec('M', x_ + .44f,y_ - .6f);
+                AddCharToVec('E', x_ + .55f,y_ - .6f);
+                AddCharToVec('N', x_ + .66f,y_- .6f);
+                AddCharToVec('U', x_ + .77f,y_ - .4f);
+                AddCharToVec('-', x_ + .88f,y_ - .4f);
+                AddCharToVec('M', x_ + .99f,y_ - .4f);
                 //game over
             }
             glBindVertexArray(VAO_);
