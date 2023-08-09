@@ -125,9 +125,6 @@ public:
         AddCharToVec('M', x_ + 1.1f, y_ - 1.3f);
         AddCharToVec('E', x_ + 1.21f, y_ - 1.3f);
         
-        
-        
-
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
 
@@ -144,8 +141,22 @@ public:
         glDeleteVertexArrays(1, &VAO_);
     }
 
-    void updateMenu(int i, int enemies_defeated = 0){
-        currentstate_ = i;
+    void updateMenu(int i, int score_ = 0){
+        if(i != currentstate_){
+            vertices_.clear();
+            //update to whatever new state is
+            currentstate_ = i;
+            if(currentstate_ == 0){
+                //start menu
+            }else if(currentstate_ == 1){
+                score = score_;
+                //in game
+            }else if(currentstate_ == 2){
+                //pause screen
+            }else{
+                //game over
+            }
+        }
         //make check so if nothing changes state wise can just go straight to render without reallocating
 
         //this will, depending on i, clear the vector 

@@ -134,20 +134,17 @@ public:
             
             case GameState::Start:
                 //implement startmenu function that displays start menu info
-                
+                Menu_->updateMenu(0);
                 break;
             case GameState::Playing:
                 // Normal game update logic
                 //check for collisions here
                 //check for game ending duck movement
+                Menu_->updateMenu(1,enemies_defeated);
                 spawnEnemy();
                 my_tank->updateCannonballs();
                 updateEnemies();
                 detector.Hit_Duck(ducks_, my_tank, enemies_defeated, enemies_on_screen);
-                if(enemies_defeated == 50){
-                    outcome = true;
-                    game_over = true;
-                }
                 if(game_over == true || detector.Hit_Tank(ducks_, my_tank)){
                     current_state = GameState::Gameover;
                     if(outcome == false){
@@ -158,10 +155,12 @@ public:
                 }
                 break;
             case GameState::Paused:
+                Menu_->updateMenu(2,enemies_defeated);
                 // Display a pause menu
                 //menu::pausemenu();
                 break;
             case GameState::Gameover:
+                Menu_->updateMenu(3,enemies_defeated);
                 // Display game over screen
                 //menu::gameover()
                 break;
@@ -176,16 +175,16 @@ public:
                 Menu_->renderMenu();
                 break;
             case GameState::Playing:
-               my_tank->render();
-               my_tank->renderCannonballs();
-               renderEnemies();
-               //Menu_.renderMenu(1);
+                my_tank->render();
+                my_tank->renderCannonballs();
+                renderEnemies();
+                Menu_->renderMenu();
                 break;
             case GameState::Paused:
-                //Menu_.renderMenu(2);
+                Menu_->renderMenu();
                 break;
             case GameState::Gameover:
-                //Menu_.renderMenu(3);
+                Menu_->renderMenu();
                 break;
         }
         
@@ -205,8 +204,14 @@ public:
 
     void spawnEnemy(){
         if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
+            if(ducks_.size() == 50 ){
+                if(enemies_on_screen == 0){
+                    ducks_.clear();
+                }
+            }else{
             ducks_.emplace_back();
             enemies_on_screen++;
+            }
             lastspawn_time = glfwGetTime();
         }}
     void updateEnemies(){
