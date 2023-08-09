@@ -339,7 +339,7 @@ public:
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f); //right side
 
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.05f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
 
