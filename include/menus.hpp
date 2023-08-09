@@ -18,22 +18,31 @@ public:
 
         AddCharToVec('C', x_, y_);
         AddCharToVec('A', x_ + .11f, y_);
-        AddCharToVec('H', x_ + .22f, y_);
-        AddCharToVec('I', x_ + .33f, y_);
-        AddCharToVec('L', x_ + .44f, y_);
+        AddCharToVec('N', x_ + .22f, y_);
+        AddCharToVec('N', x_ + .33f, y_);
+        AddCharToVec('O', x_ + .44f, y_);
         AddCharToVec('N', x_ + .55f, y_);
-        AddCharToVec('O', x_ + .66f, y_);
-        AddCharToVec('P', x_ + .77f, y_);
-        AddCharToVec('Q', x_ + .88f, y_);
-        AddCharToVec('T', x_ + .99f, y_);
-        AddCharToVec('U', x_ + 1.1f, y_);
-        AddCharToVec('Y', x_ + 1.21f, y_);
-        AddCharToVec('E', x_ + 1.32f, y_);
-        AddCharToVec('S', x_ + 1.43f, y_);
-        AddCharToVec('D', x_ + 1.54f, y_);
-        AddCharToVec('G', x_ + 1.65f, y_);
-        AddCharToVec('R', x_ + 1.76f, y_);
-        AddCharToVec('M', x_ + 1.87f, y_);
+        AddCharToVec('C', x_ + .77f, y_);
+        AddCharToVec('R', x_ + .88f, y_);
+        AddCharToVec('U', x_ + .99f, y_);
+        AddCharToVec('S', x_ + 1.1f, y_);
+        AddCharToVec('A', x_ + 1.21f, y_);
+        AddCharToVec('D', x_ + 1.32f, y_);
+        AddCharToVec('E', x_ + 1.43f, y_);
+        AddCharToVec('R', x_ + 1.54f, y_);
+        AddCharToVec('S', x_ + 1.65f, y_);
+        
+        AddCharToVec('S', x_ , y_ - 0.3f);
+        AddCharToVec('T', x_ + .11f, y_ - 0.3f);
+        AddCharToVec('A', x_ + .22f, y_ - 0.3f);
+        AddCharToVec('R', x_ + .33f, y_ - 0.3f);
+        AddCharToVec('T', x_ + .44f, y_ - 0.3f);
+        AddCharToVec('-', x_ + .55f, y_ - 0.3f);
+        AddCharToVec('E', x_ + .66f, y_ - 0.3f);
+        AddCharToVec('N', x_ + .77f, y_ - 0.3f);
+        AddCharToVec('T', x_ + .88f, y_ - 0.3f);
+        AddCharToVec('E', x_ + .99f, y_ - 0.3f);
+        AddCharToVec('R', x_ + 1.1f, y_ - 0.3f);
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
 
@@ -421,6 +430,12 @@ public:
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
                 vertices_.push_back(x); vertices_.push_back(y - 0.05f); //middle horizontal
+                break;
+            case '-':
+                vertices_.push_back(x); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle of A
                 break;
         }
     }
