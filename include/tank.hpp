@@ -148,7 +148,7 @@ public:
     void updateCannonballs(){
         for (auto it = cannonballs_.begin(); it != cannonballs_.end(); ++it) {
             if (it->exists()) {
-                it->move(0.05f);
+                it->move(0.03f);
                 // Check if the cannonball has gone off the top of the screen
                 if (it->getY() > 1.0f) {
                     it->setExists(false);
