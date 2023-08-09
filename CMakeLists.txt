@@ -17,7 +17,10 @@ include_directories(${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} )
 include_directories(cannon-crusaders PUBLIC include/)
 
 # add executable
-add_executable(cannon-crusaders app/main.cpp lib/tank.cpp lib/menus.cpp lib/game.cpp lib/cannonballs.cpp lib/enemy.cpp)
+add_executable(cannon-crusaders app/main.cpp lib/tank.cpp 
+								lib/menus.cpp lib/game.cpp 
+								lib/cannonballs.cpp lib/enemy.cpp 
+								lib/collisiondetection.cpp)
 # link libraries
 target_link_libraries(cannon-crusaders ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} glfw )
 
