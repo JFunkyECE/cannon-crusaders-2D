@@ -16,7 +16,6 @@ class Game{
 
 public:
 
-    //be used to indicate to in update what todo
     enum class GameState{
         Start, //initial screen, main menu
         Playing, //in game
@@ -42,14 +41,14 @@ private:
 
     GameState current_state;
     GLFWwindow* window_;
-    tank::Tank* my_tank;
+    tank::Tank* my_tank;               
     menu::Menu* Menu_;
     float lastshot_time;
-    float lastspawn_time;        // Last time an enemy was spawned.
-    float spawn_interval;        // Time between enemy spawns.
-    std::vector<Ducks::Enemy> ducks_;   // List of enemies in the game.
-    int enemies_defeated;        // Number of enemies defeated.
-    int enemies_on_screen;       // Number of enemies currently on the screen.
+    float lastspawn_time;        
+    float spawn_interval;        
+    std::vector<Ducks::Enemy> ducks_;
+    int enemies_defeated;       
+    int enemies_on_screen;       
 
 };
 

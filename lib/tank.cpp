@@ -28,12 +28,10 @@ namespace tank{
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
 
-        // Generate and bind the Vertex Buffer Object (VBO) for the tank
         glGenBuffers(1, &VBO_);
         glBindBuffer(GL_ARRAY_BUFFER, VBO_);
         glBufferData(GL_ARRAY_BUFFER, sizeof(tankVertices), tankVertices, GL_STATIC_DRAW);
 
-        // Specify the layout of the vertex data
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
     }
@@ -42,7 +40,7 @@ namespace tank{
         glDeleteBuffers(1, &VBO_);
         glDeleteVertexArrays(1, &VAO_);
     }
-    void Tank::render() const{
+    void Tank::render(){
         // Bind the VAO and draw the tank and the cannon launcher
         glColor3f(0.5f,0.5f,0.5f);
         glBindVertexArray(VAO_);
@@ -79,13 +77,7 @@ namespace tank{
 
         
     }
-    
-    float Tank::getX(){
-        return x0;
-    }
-    float Tank::getY(){
-        return y0;
-    }
+
     float Tank::getX() const{
         return x0;
     }
@@ -95,14 +87,12 @@ namespace tank{
     //adds a cannonball to the vector cannonballs_
     void Tank::shoot(){
         int cannonballs_onscreen = 5;
-        //std::cout<< "Live Cannonballs on screen #"<<live_cannonballs() << std::endl;
-
         if(live_cannonballs() < cannonballs_onscreen && cannonballs_fired < 200){
                 
                 cannonballs_.emplace_back(x1,y1);
                 ++cannonballs_fired;
                 std::cout<< "Cannonball #"<<cannonballs_fired<<" fired" << std::endl;
-        } else if (cannonballs_fired >= 200){
+        } else if (cannonballs_fired >= 200 && live_cannonballs() == 0){
             cannonballs_.clear();  
             cannonballs_fired = 0;      
             }
@@ -118,7 +108,7 @@ namespace tank{
             } 
         }
     }
-    void Tank::renderCannonballs() const{
+    void Tank::renderCannonballs(){
         for (const Cannonballs& cannonball : cannonballs_) {
         if (cannonball.exists()) {
             cannonball.render();
@@ -128,14 +118,11 @@ namespace tank{
     int Tank::live_cannonballs() const{
         int count = 0;
         for (const Cannonballs& cannonball : cannonballs_) {
-        if (cannonball.exists()) {
-            ++count;
-        }
+            if (cannonball.exists()) {
+                ++count;
+            }
         }
         return count; 
     }
     std::vector<Cannonballs>& Tank::Cannonballpositions(){return cannonballs_;}
-
-     
-
 }

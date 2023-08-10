@@ -13,16 +13,14 @@ public:
 
     Tank();
     ~Tank();
-    void render() const;
+    void render();
     void move(float dx);
     void update_vertices();
-    float getX();
-    float getY();
     float getX() const;
     float getY() const;
     void shoot();
     void updateCannonballs();
-    void renderCannonballs() const;
+    void renderCannonballs();
     int live_cannonballs() const;
     std::vector<Cannonballs>& Cannonballpositions();
 
@@ -34,5 +32,5 @@ private:
     std::vector<Cannonballs> cannonballs_; //stores cannonball data
     int cannonballs_fired; //records # of shots fired
 };
-}//end of namespace
+}
 #endif

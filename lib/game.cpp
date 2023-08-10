@@ -2,33 +2,31 @@
 #include <iostream>
 
     Game::Game():current_state(GameState::Start), my_tank(nullptr){
-        /* Initialize the library */
-        if (!glfwInit())
+        if (!glfwInit()){
             exit(-1);
-        /* Create a windowed mode window and its OpenGL context */
+        }
         glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
         window_ = glfwCreateWindow(800, 800, "Cannon Crusaders", NULL, NULL);
         if (!window_){
-            glfwTerminate(); //need this hear because after initialization
+            glfwTerminate();
             exit(-1);
         }
 
-        /* Make the window's context current */
         glfwMakeContextCurrent(window_);
             glewExperimental = GL_TRUE;
-            if (glewInit() != GLEW_OK) {
-                std::cout << "Failed to initialize GLEW" << std::endl;
-                exit(-1);
-            }
+        if (glewInit() != GLEW_OK) {
+            std::cout << "Failed to initialize GLEW" << std::endl;
+            exit(-1);
+        }
         my_tank = new tank::Tank(); 
         Menu_ = new menu::Menu();
-        ducks_.reserve(500); //reserve enough space for duck objects
+        ducks_.reserve(50); 
         ducks_.clear();
         lastshot_time = 0.0f;
-        current_state = GameState::Start; //change back to start page eventually 
+        current_state = GameState::Start; 
         lastspawn_time = 0.0f; 
-        spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
-        enemies_defeated = 0; //records # of shots fired
+        spawn_interval = 1.5f; 
+        enemies_defeated = 0; 
         enemies_on_screen = 0;
     }
 
@@ -40,19 +38,19 @@
        glfwTerminate();
     }
 
-    //resets gamestate and data associated with game
+    //resets data members associated with game
     void Game::Init(){
         // Reset the tank
         delete my_tank;
-        my_tank = new tank::Tank();  // This creates a new tank object, effectively resetting it
+        my_tank = new tank::Tank(); 
         Menu_->updateMenu(0);
         // Reset other game variables
         ducks_.clear();
         lastshot_time = 0.0f;
-        current_state = GameState::Start; //change back to start page eventually 
+        current_state = GameState::Start; 
         lastspawn_time = 0.0f; 
-        spawn_interval = 1.5f; // to make sure enemies dont spawn in too quick succession
-        enemies_defeated = 0; //records # of shots fired
+        spawn_interval = 1.5f; 
+        enemies_defeated = 0; 
         enemies_on_screen = 0;
     }
 
@@ -61,11 +59,11 @@
         switch (current_state) {
             case GameState::Start:
                 if (glfwGetKey(window_, GLFW_KEY_ENTER) == GLFW_PRESS) {
-                    Init(); //ensures data resets    
+                    Init(); //data reset    
                     current_state = GameState::Playing;
                 }
                 if (glfwGetKey(window_, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-                    //quits
+                    //quits application
                     glfwSetWindowShouldClose(window_, 1);
                 }
                 break;
@@ -78,8 +76,8 @@
                     my_tank->move(0.030f);  // Move the tank to the right
                 }
                 if (glfwGetKey(window_, GLFW_KEY_SPACE) == GLFW_PRESS) {
-                    float current_time = glfwGetTime(); //gives time in seconds
-                    if(current_time - lastshot_time >= 0.15f){ //limit shooting to one per 0.2 seconds or 5 shots per second
+                    float current_time = glfwGetTime(); 
+                    if(current_time - lastshot_time >= 0.15f){ //limit shooting to one per 0.15 seconds
                         my_tank->shoot();
                         lastshot_time = current_time;
                     }
@@ -91,16 +89,16 @@
 
             case GameState::Paused:
                 if (glfwGetKey(window_, GLFW_KEY_ENTER) == GLFW_PRESS) {
-                    current_state = GameState::Playing; 
+                    current_state = GameState::Playing; //Reumse
                 }
                 if (glfwGetKey(window_, GLFW_KEY_M) == GLFW_PRESS) {
-                    current_state = GameState::Start; // Resume the game
+                    current_state = GameState::Start; // Main Menu
                 }
                 break;
 
             case GameState::Gameover:
                 if (glfwGetKey(window_, GLFW_KEY_R) == GLFW_PRESS) {
-                    Restart();
+                    Restart(); //Restart Game
                 }
                 if (glfwGetKey(window_, GLFW_KEY_M) == GLFW_PRESS) {
                     current_state = GameState::Start; // Resume the game
@@ -110,22 +108,18 @@
     }
         
 
-    // add input for pausing game
 
     void Game::Update(){
         collisions::CollisionDetection detector;
         ProcessInput();
-        //Menu_.updateMenu();
         switch (current_state) {
-            
             case GameState::Start:
-                //implement startmenu function that displays start menu info
                 Menu_->updateMenu(0);
                 break;
             case GameState::Playing:
-                // Normal game update logic
-                //check for collisions here
+                //check for collisions
                 //check for game ending duck movement
+                //update object positions
                 Menu_->updateMenu(1,enemies_defeated);
                 spawnEnemy();
                 my_tank->updateCannonballs();
@@ -137,20 +131,15 @@
                 break;
             case GameState::Paused:
                 Menu_->updateMenu(2,enemies_defeated);
-                // Display a pause menu
-                //menu::pausemenu();
                 break;
             case GameState::Gameover:
                 Menu_->updateMenu(3,enemies_defeated);
-                // Display game over screen
-                //menu::gameover()
                 break;
         }
     }
     void Game::Render(){
         glClear(GL_COLOR_BUFFER_BIT);
         glClearColor(0.0f, 0.5f, 0.0f, 1.0f);
-        //create menu object here
         switch (current_state) {
             case GameState::Start:
                 Menu_->renderMenu();
@@ -168,10 +157,7 @@
                 Menu_->renderMenu();
                 break;
         }
-        
-
-        //add cases for different playing states
-    }
+        }
 
     GLFWwindow* Game::getWindow() const {
         return window_;
@@ -184,11 +170,13 @@
 
 
     void Game::spawnEnemy(){
+        //this clears non active objects in ducks_ once full
         if(enemies_defeated % 50 == 0 && enemies_defeated != 0){
             if(enemies_on_screen == 0){
             ducks_.clear();
+            }
         }
-        }
+        //Never more than 5 enemies on screen
         if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
             enemies_on_screen++;
@@ -198,7 +186,7 @@
                     if(enemies_defeated > 30){
                         if(enemies_defeated > 40){
                             if(enemies_defeated > 50){
-                                    spawn_interval = 0.8f;
+                                    spawn_interval = 0.70f;
                             }else{
                                 spawn_interval = 0.95f;
 
@@ -217,13 +205,14 @@
             }else{
                 spawn_interval = 1.3f;
             }
-        }}
+        }
+    }
     void Game::updateEnemies(){
         //movement algorithm for enemy objects
         for (auto it = (ducks_.begin()); it != ducks_.end(); ++it) {
             if (it->isActive()) {
                 it->move(-0.015f);
-                // Check if the duck has gone off the bottom of the screen
+                // Check if the duck has gone off the bottom of the screen, game ending
                 if (it->getY() < -1.0f) {
                     current_state = GameState::Gameover;
                 }
