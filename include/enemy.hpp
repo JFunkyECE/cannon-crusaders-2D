@@ -21,12 +21,11 @@ public:
     void setActive(bool setting);
     
 private:
-bool is_active;
-float x_,y_;
-GLuint VAO_, VBO_;
+
+    bool is_active;
+    float x_,y_;
+    GLuint VAO_, VBO_;
+    
 };
-
-
-
 }
 #endif

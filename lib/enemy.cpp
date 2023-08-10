@@ -6,10 +6,11 @@ namespace Ducks{
     //need constructor that reserves based on difficulty, ie either 20 or 50 enemies.
     Enemy::Enemy(): y_(1.0f), is_active(true){
 
-        static std::random_device rd;  // Will be used to obtain a seed for the random number engine
+        //generates random spawn location between in visible window
+        static std::random_device rd;  
         static std::mt19937 gen(rd());
         static std::uniform_real_distribution<> dis(-1.0, 0.85);
-        x_ = dis(gen); //gives x random number between -1.0 and 0.85
+        x_ = dis(gen); 
 
 
         float duck_vertices[] = {
@@ -34,9 +35,9 @@ namespace Ducks{
             x_ + 0.08f, y_ - 0.04f,            //top right
             x_ + 0.08f, y_ - 0.06f,            //bottom right
             //beak vertices
-            x_,y_-0.075f,           //middle
-            x_ + 0.04f, y_ - 0.05f, //top right
-            x_ + 0.04f, y_ - 0.1f   //bottom right
+            x_,y_-0.075f,                      //middle
+            x_ + 0.04f, y_ - 0.05f,            //top right
+            x_ + 0.04f, y_ - 0.1f              //bottom right
         };
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
@@ -49,17 +50,14 @@ namespace Ducks{
         glEnableVertexAttribArray(0);
 
     }
-    //destructor
     Enemy::~Enemy(){
         glDeleteBuffers(1, &VBO_);
         glDeleteVertexArrays(1, &VAO_);
     }
 
-    //where the movement algorithm will be implemented
     void Enemy::move( float dy){
         y_ += dy;
-        //x_ += dx; will add if time
-        // Update the vertices of the ducky
+        //update vertices with new y
         float duck_vertices[] = {
             //body vertices, 3 sections
             x_ + 0.04f, y_ - 0.15f,            //bottom left

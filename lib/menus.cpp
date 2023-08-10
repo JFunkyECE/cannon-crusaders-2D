@@ -129,10 +129,9 @@ namespace menu{
         glDeleteBuffers(1, &VBO_);
         glDeleteVertexArrays(1, &VAO_);
     }
-
-    void Menu::updateMenu(int i, int score_){
+    //i is passed based on which menu should be displayed
+    void Menu::updateMenu(const int i, const int score_){
         if(i != currentstate_ || score_ != score){
-            //update to whatever new state is
             vertices_.clear();
             currentstate_ = i;
             if(currentstate_ == 0){
@@ -335,8 +334,7 @@ namespace menu{
 
         }    
     }
-
-    void Menu::renderMenu(){
+    void Menu::renderMenu() const{
           
         glBindVertexArray(VAO_);
         glBindBuffer(GL_ARRAY_BUFFER, VBO_);
@@ -346,13 +344,12 @@ namespace menu{
         glDrawArrays(GL_QUADS,i*4,4);
         }
     }   
-    //implement after
-    void Menu::AddIntToVec(int number, float x, float y){
+    //Converts Score into a string and adds to vector to display score to user while playing
+    void Menu::AddIntToVec(const int number,const float x,const float y){
 
         std::string numStr = std::to_string(number);
         for (char c : numStr) {
             switch(c){
-                //do the same thing as before  
                 case '0':
                     vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
@@ -372,7 +369,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
                     break;
                 case '1':
                 vertices_.push_back(x + 0.0375f); vertices_.push_back(y);
@@ -410,12 +407,12 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);//left
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top 
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.075f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
@@ -441,7 +438,7 @@ namespace menu{
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.075f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //left side of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //left
 
                     break;
                 case '5':
@@ -468,18 +465,18 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
                     break;
                 case '6':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.075f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
@@ -494,29 +491,29 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
                     break;
                 case '7':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top
 
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of A
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
                     break;
                 case '8':
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of A
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
@@ -537,7 +534,7 @@ namespace menu{
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.075f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //left side
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //left
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
@@ -547,7 +544,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.05f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
@@ -558,29 +555,29 @@ namespace menu{
         x+= 0.11f; //so numbers dont overlap
         }
     }
-    //adds char to vector
-    void Menu::AddCharToVec(char letter, float x, float y){
+    //adds character to vector
+    void Menu::AddCharToVec(const char letter, const float x, const float y){
         switch(letter){
             case 'A':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top
 
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of A
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.05f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle
                 break;
             case 'C':
                 vertices_.push_back(x); vertices_.push_back(y);
@@ -599,7 +596,7 @@ namespace menu{
                 vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
                 break;
 
-            case 'D': //not done
+            case 'D':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
@@ -618,18 +615,18 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
                 break;
-            case 'E': //not done
+            case 'E': 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.075f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
@@ -645,28 +642,28 @@ namespace menu{
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
                 vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle
                 break;
-            case 'G': //not done
+            case 'G':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top of A
+                vertices_.push_back(x); vertices_.push_back(y - 0.025f);//top
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.075f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
@@ -681,23 +678,23 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of A
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
                 break;
             case 'H':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of H
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
 
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of H
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right 
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle of H
+                vertices_.push_back(x); vertices_.push_back(y - 0.0625f); //middle 
                 break;
             case 'I':
                 vertices_.push_back(x); vertices_.push_back(y);
@@ -726,11 +723,11 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f);
                 vertices_.push_back(x); vertices_.push_back(y - 0.1f);//bottom
                 break;
-            case 'M': //not done
+            case 'M':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side of H
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
@@ -745,18 +742,18 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side of H
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right 
                 break;
             case 'N':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left
 
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right 
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
@@ -782,13 +779,13 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right 
                 break;    
             case 'P':
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left 
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
@@ -798,7 +795,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.075f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f); //right
 
                 vertices_.push_back(x); vertices_.push_back(y - 0.05f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
@@ -824,13 +821,13 @@ namespace menu{
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.05f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.05f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f); //right
                 break;
-            case 'R': //not done
+            case 'R': 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left side
+                vertices_.push_back(x); vertices_.push_back(y - 0.1f); //left 
 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
@@ -840,7 +837,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.075f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f); //right 
 
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.05f);
                 vertices_.push_back(x); vertices_.push_back(y - 0.075f);
@@ -852,7 +849,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.075f);
                 vertices_.push_back(x); vertices_.push_back(y - 0.075f); //middle
                 break;
-            case 'S': //not done
+            case 'S': 
                 vertices_.push_back(x); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.025f);
@@ -876,7 +873,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
                 break;
             case 'T':
                 vertices_.push_back(x); vertices_.push_back(y);
@@ -903,7 +900,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.1f); //right
                 break;
             case 'V':
                 vertices_.push_back(x); vertices_.push_back(y);
@@ -914,7 +911,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.0375f); vertices_.push_back(y - 0.1f);
-                vertices_.push_back(x + 0.0625f); vertices_.push_back(y - 0.1f); //right side
+                vertices_.push_back(x + 0.0625f); vertices_.push_back(y - 0.1f); //right
                 break;
             case 'Y': 
                 vertices_.push_back(x); vertices_.push_back(y);
@@ -925,7 +922,7 @@ namespace menu{
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.075f); vertices_.push_back(y - 0.05f);
-                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f); //right side
+                vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f); //right
 
                 vertices_.push_back(x + 0.0375f); vertices_.push_back(y - 0.025f);
                 vertices_.push_back(x + 0.0675f); vertices_.push_back(y - 0.025f);
@@ -944,7 +941,6 @@ namespace menu{
                 vertices_.push_back(x + 0.025f); vertices_.push_back(y - 0.0625f); //middle
                 break;
             case '<':
-                //middle
                 vertices_.push_back(x + 0.05f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0375f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.0625f);
@@ -953,7 +949,7 @@ namespace menu{
                 vertices_.push_back(x + 0.05f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.05f); vertices_.push_back(y - 0.1f);
                 vertices_.push_back(x ); vertices_.push_back(y - 0.05f);
-                vertices_.push_back(x + 0.05f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.05f); vertices_.push_back(y); //arrow
 
                 break;
             case '>':
@@ -965,7 +961,7 @@ namespace menu{
                 vertices_.push_back(x + 0.05f); vertices_.push_back(y);
                 vertices_.push_back(x + 0.05f); vertices_.push_back(y - 0.1f);
                 vertices_.push_back(x + 0.1f); vertices_.push_back(y - 0.05f);
-                vertices_.push_back(x + 0.05f); vertices_.push_back(y);
+                vertices_.push_back(x + 0.05f); vertices_.push_back(y);//arrow
                 break;
         }
     }

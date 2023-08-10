@@ -16,20 +16,19 @@ public:
 
     Menu();
     ~Menu();
-    void updateMenu(int i, int score_ = 0);
-    void renderMenu();
-    void AddIntToVec(int number, float x, float y);
-    void AddCharToVec(char letter, float x, float y);
-        
-    
-
+    void updateMenu(const int i, const int score_ = 0);
+    void renderMenu() const;
 
 private:
-GLuint VAO_, VBO_;
-float x_,y_;
-int currentstate_;
-int score;
-std::vector<float> vertices_;
+
+    void AddIntToVec(const int number, const float x, const float y);
+    void AddCharToVec(const char letter,const float x,const float y);
+
+    GLuint VAO_, VBO_;
+    float x_,y_;
+    int currentstate_;
+    int score;
+    std::vector<float> vertices_;
 };
 
 }
