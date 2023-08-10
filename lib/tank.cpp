@@ -91,7 +91,6 @@ namespace tank{
                 
                 cannonballs_.emplace_back(x1,y1);
                 ++cannonballs_fired;
-                std::cout<< "Cannonball #"<<cannonballs_fired<<" fired" << std::endl;
         } else if (cannonballs_fired >= 200 && live_cannonballs() == 0){
             cannonballs_.clear();  
             cannonballs_fired = 0;      

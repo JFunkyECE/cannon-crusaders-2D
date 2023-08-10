@@ -4,7 +4,6 @@
 #include "tank.hpp"
 #include "enemy.hpp"
 #include "cannonballs.hpp"
-#include <iostream>
 
 namespace collisions{
 

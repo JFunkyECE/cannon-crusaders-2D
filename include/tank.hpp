@@ -4,7 +4,6 @@
 #include <GLFW/glfw3.h>
 #include "cannonballs.hpp"
 #include <vector>
-#include <iostream>
 
 namespace tank{
 
