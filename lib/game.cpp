@@ -182,21 +182,23 @@
             std::cout <<spawn_interval<< std::endl;
             enemies_on_screen++;
             lastspawn_time = glfwGetTime();
-        if(enemies_defeated > 10){
-            spawn_interval = 1.2f;
-        }
-        if(enemies_defeated > 20){
-            spawn_interval = 1.0f;
-        }
-        if(enemies_defeated > 40){
-            spawn_interval = 0.9f;
-        }
-        if(enemies_defeated > 50){
-            spawn_interval = 0.75f;
-        }
-        if(enemies_defeated > 75){
-            spawn_interval = 0.5f;
-        }
+            spawn_interval = 1.5f - enemies_defeated/100.0f;
+            std::cout << spawn_interval <<std::endl;
+        // if(enemies_defeated > 10){
+        //     spawn_interval = 1.2f;
+        // }
+        // if(enemies_defeated > 20){
+        //     spawn_interval = 1.0f;
+        // }
+        // if(enemies_defeated > 40){
+        //     spawn_interval = 0.9f;
+        // }
+        // if(enemies_defeated > 50){
+        //     spawn_interval = 0.75f;
+        // }
+        // if(enemies_defeated > 75){
+        //     spawn_interval = 0.5f;
+        // }
         }
     }
     void Game::updateEnemies(){
