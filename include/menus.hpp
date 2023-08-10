@@ -21,7 +21,7 @@ public:
 
 private:
 
-    void AddIntToVec(const int number, const float x, const float y);
+    void AddIntToVec(const int number, float x, const float y);
     void AddCharToVec(const char letter,const float x,const float y);
 
     GLuint VAO_, VBO_;

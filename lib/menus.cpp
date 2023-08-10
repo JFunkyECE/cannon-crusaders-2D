@@ -345,7 +345,7 @@ namespace menu{
         }
     }   
     //Converts Score into a string and adds to vector to display score to user while playing
-    void Menu::AddIntToVec(const int number,const float x,const float y){
+    void Menu::AddIntToVec(const int number, float x,const float y){
 
         std::string numStr = std::to_string(number);
         for (char c : numStr) {
