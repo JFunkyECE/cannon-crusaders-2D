@@ -27,17 +27,12 @@ namespace menu{
         AddCharToVec('R', x_ + .33f, y_ - 0.3f);
         AddCharToVec('T', x_ + .44f, y_ - 0.3f);
         AddCharToVec('-', x_ + .55f, y_ - 0.3f);
-        AddCharToVec('P', x_ + .66f, y_ - 0.3f);
-        AddCharToVec('R', x_ + .77f, y_ - 0.3f);
-        AddCharToVec('E', x_ + .88f, y_ - 0.3f);
-        AddCharToVec('S', x_ + .99f, y_ - 0.3f);
-        AddCharToVec('S', x_ + 1.1f, y_ - 0.3f);
-        AddCharToVec('E', x_ + 1.32f, y_ - 0.3f);
-        AddCharToVec('N', x_ + 1.43f, y_ - 0.3f);
-        AddCharToVec('T', x_ + 1.54f, y_ - 0.3f);
-        AddCharToVec('E', x_ + 1.65f, y_ - 0.3f);
-        AddCharToVec('R', x_ + 1.76f, y_ - 0.3f);
-
+        AddCharToVec('E', x_ + .66f, y_ - 0.3f);
+        AddCharToVec('N', x_ + .77f, y_ - 0.3f);
+        AddCharToVec('T', x_ + .88f, y_ - 0.3f);
+        AddCharToVec('E', x_ + .99f, y_ - 0.3f);
+        AddCharToVec('R', x_ + 1.1f, y_ - 0.3f);
+        
         AddCharToVec('Q', x_ , y_ - 0.45f);
         AddCharToVec('U', x_ + .11f, y_ - 0.45f);
         AddCharToVec('I', x_ + .22f, y_ - 0.45f);
