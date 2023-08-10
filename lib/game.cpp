@@ -179,6 +179,7 @@
         //Never more than 5 enemies on screen
         if (live_enemies() < 5 && glfwGetTime() - lastspawn_time > spawn_interval) {
             ducks_.emplace_back();
+            std::cout <<spawn_interval<< std::endl;
             enemies_on_screen++;
             lastspawn_time = glfwGetTime();
             if(enemies_defeated > 10 && enemies_defeated < 51){
