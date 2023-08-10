@@ -56,7 +56,6 @@ namespace Ducks{
     }
 
     //where the movement algorithm will be implemented
-    //straight line down for now, will implement more complex movement once collision and other game aspects made.
     void Enemy::move( float dy){
         y_ += dy;
         //x_ += dx; will add if time
@@ -93,7 +92,7 @@ namespace Ducks{
 
     }
 
-    void Enemy::render(){
+    void Enemy::render() const{
         glBindVertexArray(VAO_);
         //draw yellow body of duck
         glColor3f(1.0f,1.0f,0.0f);

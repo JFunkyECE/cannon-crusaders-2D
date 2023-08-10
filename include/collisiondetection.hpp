@@ -10,16 +10,16 @@ namespace collisions{
 
 class CollisionDetection{
 public:
-//first function checks whether bullets have made contact with ducks
-//three parameters: duck vector, tank object, and enemies defeated counter
+
+//detects collisions between cannonballs and enemy objects
 void Hit_Duck(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank, int& enemies_defeated, int& enemies_on_screen);
 
-bool Collision_detected(const Ducks::Enemy& duck, const Cannonballs& cannonball);
-//second function checks whether a ducks has reached the end or if duck has made contact with tank
-//if this returns true then we stop the program becuase the user has lost.
-//two parameters: duck vector, and tank object
+//detects collision between tank and duck
 bool Hit_Tank(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank);
 
+private:
+//helper functions for detection collisions
+bool Collision_detected(const Ducks::Enemy& duck, const Cannonballs& cannonball);
 bool Collision_detected(const Ducks::Enemy& duck, const tank::Tank* my_tank);
 };
 }

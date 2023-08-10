@@ -14,7 +14,7 @@ public:
     Enemy();
     ~Enemy();
     void move( float dy);
-    void render();
+    void render() const;
     float getX() const;
     float getY() const;
     bool isActive() const;

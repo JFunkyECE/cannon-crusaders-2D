@@ -1,8 +1,7 @@
 #include "../include/cannonballs.hpp"
 
     Cannonballs::Cannonballs(float x, float y): x_(x + 0.02f), y_(y + .1f), exists_(true){
-        //x_ and y_ now represent the bottom left corner of the cannonball
-        //using squares initially for simplicity, will update to circles if time permitted
+        //x_ and y_ represent the bottom left corner of the cannonball
         float cannonball_vertices[] = {
             x_ , y_ , //bottom left
             x_ , y_ + 0.04f, //top left
@@ -10,7 +9,7 @@
             x_ + 0.04f, y_ //bottom right
 
         };
-        //initialize VAO and VBO for cannonball object
+        //initialize VAO and VBO for cannonball
         glGenVertexArrays(1, &VAO_);
         glBindVertexArray(VAO_);
 
@@ -27,7 +26,7 @@
     glDeleteBuffers(1, &VBO_);
     glDeleteVertexArrays(1, &VAO_);
     }    
-    //handles updating the vertices and VAO and VBO
+    //handles moving cannonball by updating the vertices, VAO, and VBO
     void Cannonballs::move(float dy){
         y_ += dy;
 
@@ -43,7 +42,7 @@
         glBindBuffer(GL_ARRAY_BUFFER, VBO_);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
     }
-    //draws cannonball
+    //Draws cannonball object
     void Cannonballs::render() const{
         glColor3f(1.0f,1.0f,1.0f);
         glBindVertexArray(VAO_);
@@ -53,7 +52,7 @@
     bool Cannonballs::exists() const {
         return exists_;
     }
-
+    //Sets variable that decides whether cannonball should be rendered
     void Cannonballs::setExists(bool exists) {
         exists_ = exists;
     }
@@ -61,5 +60,5 @@
         return x_;
     }
     float Cannonballs::getY() const{ 
-        return y_; //give y coord of bottom of cannonball
+        return y_; 
     }

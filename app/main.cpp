@@ -6,6 +6,8 @@
 int main(void){
     // Create Game object
     Game game;
+
+    //Application Loop
     while (!glfwWindowShouldClose(game.getWindow()))
     {
         game.Update();

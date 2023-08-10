@@ -1,23 +1,21 @@
 #include "../include/collisiondetection.hpp"
 
-
 namespace collisions{
 
-//first function checks whether bullets have made contact with ducks
-//three parameters: duck vector, tank object, and enemies defeated counter
+//Updates enemies_defeated and enemies_on_screen if
+//a collision is detected between a cannonball and a
+//duck. Both contacting parties derender after colliding.
 void CollisionDetection::Hit_Duck(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank, int& enemies_defeated, int& enemies_on_screen){
     //loop through bullets, checking if active before continuing
     for(Cannonballs& cannonball : my_tank->Cannonballpositions()){
         if(cannonball.exists()){
             for(Ducks::Enemy& duck: ducks_){
                 if(duck.isActive()){
-                    //detect collision between them here
                     
                     if(Collision_detected(duck,cannonball)){
                         duck.setActive(false);
                         ++enemies_defeated;
                         --enemies_on_screen;
-                        std::cout << "enemies defeated " << enemies_defeated << std::endl;
                         cannonball.setExists(false);
                     }
                 }
@@ -27,8 +25,24 @@ void CollisionDetection::Hit_Duck(std::vector<Ducks::Enemy>& ducks_, tank::Tank*
 
 }
 
+//Ends the game if a collision is detected between
+//a duck and the users tank.
+bool CollisionDetection::Hit_Tank(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank){
+
+    //iterate through duck objects, checking whether they make contact with the tank
+    for(Ducks::Enemy& duck: ducks_){
+            if(duck.isActive()){
+                if(Collision_detected(duck,my_tank)){
+                    return true;
+                }
+            }
+    }
+    return false;
+}
+
+//helper function for Hit_Tuck
 bool CollisionDetection::Collision_detected(const Ducks::Enemy& duck, const Cannonballs& cannonball){
-    //for duck we use two hitboxes, one for the body and one for the beak, both will be represented by rectangles
+    //for duck we use two hitboxes for the body for the beak,
     float x_duck = duck.getX();
     float y_duck = duck.getY();
     
@@ -59,26 +73,10 @@ bool CollisionDetection::Collision_detected(const Ducks::Enemy& duck, const Cann
                  y_cannonball + wh_cannonball > y_body);
     return beak || body;
 }
-//second function checks whether a ducks has reached the end or if duck has made contact with tank
-//if this returns true then we stop the program becuase the user has lost.
-//two parameters: duck vector, and tank object
-bool CollisionDetection::Hit_Tank(std::vector<Ducks::Enemy>& ducks_, tank::Tank* my_tank){
 
-    //iterate through duck objects, checking whether they make contact with the tank
-    for(Ducks::Enemy& duck: ducks_){
-
-            if(duck.isActive()){
-            //detect collision between them here
-                if(Collision_detected(duck,my_tank)){
-                    return true;
-                }
-            }
-    }
-    return false;
-}
-
+//helper function for Hit_Tank
 bool CollisionDetection::Collision_detected(const Ducks::Enemy& duck, const tank::Tank* my_tank){
-    //for duck we use two hitboxes, one for the body and one for the beak, both will be represented by rectangles
+    //for duck we use two hitboxes for the body for the beak,
     float x_duck = duck.getX();
     float y_duck = duck.getY();
     
@@ -108,10 +106,7 @@ bool CollisionDetection::Collision_detected(const Ducks::Enemy& duck, const tank
                  x_tank + w_tank > x_body &&
                  y_tank < y_body + h_body &&
                  y_tank + h_tank > y_body);
-    //only returns true when a collision is detected
-
-    
-
+                 
     return (beak || body);
 }
 }
