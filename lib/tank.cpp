@@ -13,66 +13,42 @@ namespace tank{
         height_ = .15f;
 
         float tankVertices[] = {
-            // Positions
+            //tank body
             x0, y0,  // Bottom left corner
             x0, y0 + height_,  // Top left corner
             x0 + width_ , y0 + height_,  // Top right corner
-            x0 + width_  , y0   // Bottom right corner
-        };
-
-        // Initialize the vertices of the cannon launcher
-        float launcherVertices[] = {
-            // Positions
+            x0 + width_  , y0,   // Bottom right corner
+            //cannon
             x1, y1,  // Bottom left corner
             x1, y1 + .1f ,  // Top left corner
             x1 + .08f, y1 + .1f,  // Top right corner
             x1 + .08f, y1   // Bottom right corner
         };
 
-        glGenVertexArrays(1, &tankVAO);
-        glBindVertexArray(tankVAO);
+        glGenVertexArrays(1, &VAO_);
+        glBindVertexArray(VAO_);
 
         // Generate and bind the Vertex Buffer Object (VBO) for the tank
-        glGenBuffers(1, &tankVBO);
-        glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
+        glGenBuffers(1, &VBO_);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_);
         glBufferData(GL_ARRAY_BUFFER, sizeof(tankVertices), tankVertices, GL_STATIC_DRAW);
 
         // Specify the layout of the vertex data
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
-
-        // Generate and bind the Vertex Array Object (VAO) for the launcher
-        glGenVertexArrays(1, &launcherVAO);
-        glBindVertexArray(launcherVAO);
-
-        // Generate and bind the Vertex Buffer Object (VBO) for the launcher
-        glGenBuffers(1, &launcherVBO);
-        glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(launcherVertices), launcherVertices, GL_STATIC_DRAW);
-
-        // Specify the layout of the vertex data
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-
     }
      Tank::~Tank() {
         // Clean up
-        glDeleteBuffers(1, &tankVBO);
-        glDeleteBuffers(1, &launcherVBO);
-        glDeleteVertexArrays(1, &tankVAO);
-        glDeleteVertexArrays(1, &launcherVAO);
+        glDeleteBuffers(1, &VBO_);
+        glDeleteVertexArrays(1, &VAO_);
     }
     void Tank::render() const{
         // Bind the VAO and draw the tank and the cannon launcher
         glColor3f(0.5f,0.5f,0.5f);
-        glBindVertexArray(tankVAO);
-        glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
+        glBindVertexArray(VAO_);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_);
         glDrawArrays(GL_QUADS, 0, 4);
-
-        glColor3f(0.5f,0.5f,0.5f);
-        glBindVertexArray(launcherVAO);
-        glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
-        glDrawArrays(GL_QUADS, 0, 4);
+        glDrawArrays(GL_QUADS, 4, 4);
         }
     //called when the user presses a or d to move 
     void Tank::move(float dx){
@@ -90,24 +66,18 @@ namespace tank{
             x0, y0,  // Bottom left corner
             x0, y0 + height_,  // Top left corner
             x0 + width_ , y0 + height_,  // Top right corner
-            x0 + width_  , y0   // Bottom right corner
-        };
-
-        float launcherVertices[] = {
-            // Positions
+            x0 + width_  , y0,   // Bottom right corner
             x1, y1,  // Bottom left corner
             x1, y1 + .1f ,  // Top left corner
             x1 + .08f, y1 + .1f,  // Top right corner
             x1 + .08f, y1   // Bottom right corner
         };
 
-        glBindVertexArray(tankVAO);
-        glBindBuffer(GL_ARRAY_BUFFER, tankVBO);
+        glBindVertexArray(VAO_);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO_);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(tankVertices), tankVertices);
 
-        glBindVertexArray(launcherVAO);
-        glBindBuffer(GL_ARRAY_BUFFER, launcherVBO);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(launcherVertices), launcherVertices);
+        
     }
     
     float Tank::getX(){

@@ -30,7 +30,7 @@ public:
 private:
     float x0,y0,x1,y1; //for position of tank and cannon
     float width_, height_; //for sizing tank
-    GLuint tankVAO, launcherVAO, tankVBO, launcherVBO; //VAO and VBO for tank and launcher
+    GLuint VAO_,VBO_; 
     std::vector<Cannonballs> cannonballs_; //stores cannonball data
     int cannonballs_fired; //records # of shots fired
 };
