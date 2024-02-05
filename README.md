@@ -1,6 +1,6 @@
 # Cannon Crusaders
 
-First paragraph where you describe your game. This should be an engaging summary that highlights the uniqueness of your game, its storyline, main features, and anything else you want potential players or contributors to know.
+Leap into "Cannon Crusaders," the ultimate 2D tank shooter where you blast through waves of speedy ducks with your trusty cannon. As your score soars, the challenge mounts with ducks coming faster, turning each shot into a thrilling test of precision and reflexes.
 
 <p align="center">
   <img src="images/pic1.png" width="400" />
@@ -25,7 +25,13 @@ To run the game, execute the following command:
 
 ## How to Play
 
-After running the demo executable file, the user is prompted with the following screen showing commands to start playing. As you shoot more ducks, your score in the upper left corner increases, and at any point during play pressing P pauses the game which can be resumed with ENTER or restarted with R. After getting contacted by a duck or the duck passing the tank the user loses and will be prompted with another frame shown below.
+After running the demo executable file, you'll be greeted with an initial screen displaying commands to start playing. As you successfully shoot more ducks, your score in the upper left corner will increase. You can pause the game at any point by pressing 'P'; it can be resumed by pressing 'ENTER' or restarted with 'R'. If a duck makes contact with your tank or passes by it, you lose. Subsequently, you'll be presented with another screen, as shown below.
+
+<p align="center">
+  <img src="images/mainmenu.png" width="400" />
+  <img src="images/endscreen.png" width="400" />
+</p>
+
 
 ### Controls
 
